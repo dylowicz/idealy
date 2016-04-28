@@ -1,0 +1,24 @@
+<h1>Ideas index</h1>
+
+<table id="ideas">
+  <tr>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Score</th>
+    <th>Created at</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @ideas.each do |idea| %>
+    <tr>
+      <td><%= idea.title %></td>
+      <td><%= idea.status %></td>
+      <td><%= idea.score %></td>
+      <td><%= idea.created_at %></td>
+      <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
+      <td><%= link_to 'Delete', idea_path(idea), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Create an idea', new_idea_path %>
