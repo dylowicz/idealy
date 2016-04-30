@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Idea do
+describe Idea, :type => :model do
   it "has a valid factory" do
     expect(FactoryGirl.create(:idea)).to be_valid
   end

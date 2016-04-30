@@ -1,5 +1,6 @@
 class Idea < ApplicationRecord
   has_many :notes
+  has_many :tasks
   validates :title, presence: true
   validates :status, presence: true
   validates :score, presence: true
