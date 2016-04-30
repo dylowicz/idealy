@@ -15,6 +15,5 @@ describe Idea do
 
   it "is invalid without score" do
     expect(FactoryGirl.build(:idea, score: nil)).not_to be_valid
-    pry
   end
 end
