@@ -31,13 +31,13 @@ ActiveRecord::Schema.define(version: 20160430202813) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "title",                       null: false
-    t.text     "description"
-    t.boolean  "completed",   default: false, null: false
+    t.string   "title",                      null: false
+    t.text     "outcome"
+    t.boolean  "completed",  default: false, null: false
     t.datetime "due_to"
     t.integer  "idea_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["idea_id"], name: "index_tasks_on_idea_id"
   end
 

@@ -14,11 +14,33 @@
   </p>
 <% end %>
 
-<h2>Add a note:</h2>
+<h3>Add a note:</h3>
 <%= form_for([@idea, @idea.notes.build]) do |f| %>
   <p>
     <%= f.label :content %><br>
     <%= f.text_area :content %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<h2>Tasks:</h2>
+<% @idea.tasks.each do |task| %>
+  <p>
+    <strong>Title:</strong>
+    <%= task.title %>
+    <%= link_to 'Edit', edit_idea_task_path(task.idea, task) %>
+    <%= link_to 'Delete', idea_task_path(task.idea, task), method: :delete %>
+  </p>
+<% end %>
+
+<h3>Add a task:</h3>
+<%= form_for([@idea, @idea.tasks.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
   </p>
 
   <p>

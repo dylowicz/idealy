@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :ideas do
-    resources :notes
+    resources :notes, :tasks
   end
 
   root 'ideas#index'

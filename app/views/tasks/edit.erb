@@ -1,0 +1,14 @@
+<h1>Edit Task</h1>
+
+<%= form_for(@task, url: idea_task_path(@task.idea, @task), method: :patch) do |f| %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
+
+<%= link_to 'Back', idea_path(@idea) %>

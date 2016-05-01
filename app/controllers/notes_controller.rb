@@ -11,7 +11,7 @@ class NotesController < ApplicationController
 
   def update
     @note = idea.notes.find(params[:id])
-    @note.update!(note_params)
+    @note.update(note_params)
 
     redirect_to @idea
   end
