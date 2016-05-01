@@ -1,5 +1,7 @@
 <h1>Ideas index</h1>
 
+<%= link_to 'Create an idea', new_idea_path %>
+
 <table id="ideas">
   <tr>
     <th>Title</th>
@@ -11,7 +13,7 @@
   </tr>
   <% @ideas.each do |idea| %>
     <tr>
-      <td><%= idea.title %></td>
+      <td><%= link_to idea.title, idea_path(idea) %></td>
       <td><%= idea.status %></td>
       <td><%= idea.score %></td>
       <td><%= idea.created_at %></td>
@@ -20,5 +22,3 @@
     </tr>
   <% end %>
 </table>
-
-<%= link_to 'Create an idea', new_idea_path %>
