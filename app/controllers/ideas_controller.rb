@@ -1,24 +1,25 @@
 class IdeasController < ApplicationController
   def index
-    @ideas = Idea.all
+    @ideas = current_user.ideas
   end
 
   def show
-    @idea = Idea.find(params[:id])
+    @idea = current_user.ideas.find(params[:id])
   end
 
   def new
-    @idea = Idea.new
+    @idea = current_user.ideas.build
   end
 
   def edit
-    @idea = Idea.find(params[:id])
+    @idea = current_user.ideas.find(params[:id])
   end
 
   def create
-    @idea = Idea.new(idea_params)
+    @idea = current_user.ideas.build(idea_params)
 
     if @idea.save
+      flash[:success] = 'Idea created!'
       redirect_to @idea
     else
       render 'new'
@@ -26,9 +27,10 @@ class IdeasController < ApplicationController
   end
 
   def update
-    @idea = Idea.find(params[:id])
+    @idea = current_user.ideas.find(params[:id])
 
     if @idea.update(idea_params)
+      flash[:success] = 'Idea updated!'
       redirect_to @idea
     else
       render 'edit'
@@ -36,9 +38,11 @@ class IdeasController < ApplicationController
   end
 
   def destroy
-    @idea = Idea.find(params[:id])
-    @idea.destroy
+    @idea = current_user.ideas.find(params[:id])
 
+    if @idea.destroy
+      flash[:success] = 'Idea deleted!'
+    end
     redirect_to ideas_path
   end
 

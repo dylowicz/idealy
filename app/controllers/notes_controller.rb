@@ -25,7 +25,7 @@ class NotesController < ApplicationController
 
   private
     def idea
-      @idea = Idea.find(params[:idea_id])
+      @idea = current_user.ideas.find(params[:idea_id])
     end
 
     def note_params

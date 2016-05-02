@@ -6,5 +6,6 @@ FactoryGirl.define do
     i.description { Faker::Lorem.paragraph }
     i.status { "new" }
     i.score { 0 }
+    i.user { create(:user) }
   end
 end

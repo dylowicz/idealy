@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502112258) do
+ActiveRecord::Schema.define(version: 20160502193508) do
 
   create_table "ideas", force: :cascade do |t|
     t.string   "title",                   null: false
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20160502112258) do
     t.integer  "score",       default: 0, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
   create_table "notes", force: :cascade do |t|

@@ -16,4 +16,8 @@ describe Idea, :type => :model do
   it "is invalid without score" do
     expect(FactoryGirl.build(:idea, score: nil)).not_to be_valid
   end
+
+  it "is invalid without a user reference" do
+    expect(FactoryGirl.build(:idea, user: nil)).not_to be_valid
+  end
 end
