@@ -1,15 +1,23 @@
-require 'rails_helper'
+require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the SessionsHelper. For example:
-#
-# describe SessionsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-RSpec.describe SessionsHelper, :type => :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe SessionsHelper, :type => :helper do
+  describe "user authentication" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      log_in @user
+    end
+
+    it "sets current user" do
+      expect(current_user).to eql @user
+    end
+
+    it "logs in a user" do
+      expect(logged_in?).to be true
+    end
+
+    it "logs out a user" do
+      log_out
+      expect(logged_in?).to be false
+    end
+  end
 end
