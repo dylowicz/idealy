@@ -28,15 +28,18 @@
   </p>
 <% end %>
 
-<h2>Tasks:</h2>
-<% @idea.tasks.each do |task| %>
-  <p>
-    <strong>Title:</strong>
-    <%= task.title %>
-    <%= link_to 'Edit', edit_idea_task_path(task.idea, task) %>
-    <%= link_to 'Delete', idea_task_path(task.idea, task), method: :delete %>
-  </p>
-<% end %>
+<%= react_component("TaskBox", {tasks: @idea.tasks, url: idea_tasks_path(@idea)}) %>
+<% puts @idea.tasks.to_json %>
+
+<!--<h2>Tasks:</h2>-->
+<!--<% @idea.tasks.each do |task| %>-->
+  <!--<p>-->
+    <!--<strong>Title:</strong>-->
+    <!--<%= task.title %>-->
+    <!--<%= link_to 'Edit', edit_idea_task_path(task.idea, task) %>-->
+    <!--<%= link_to 'Delete', idea_task_path(task.idea, task), method: :delete %>-->
+  <!--</p>-->
+<!--<% end %>-->
 
 <h3>Add a task:</h3>
 <%= form_for([@idea, @idea.tasks.build]) do |f| %>

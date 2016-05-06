@@ -1,4 +1,14 @@
 class TasksController < ApplicationController
+  def index
+    @tasks = idea.tasks
+
+    if request.xhr?
+      render json: @tasks
+    else
+      redirect_to @idea
+    end
+  end
+
   def edit
     @task = idea.tasks.find(params[:id])
   end
@@ -6,7 +16,11 @@ class TasksController < ApplicationController
   def create
     @task = idea.tasks.create(task_params)
 
-    redirect_to @idea
+    if request.xhr?
+      render json: { task: @task }
+    else
+      redirect_to @idea
+    end
   end
 
   def update
