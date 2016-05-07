@@ -25,10 +25,12 @@ ActiveRecord::Schema.define(version: 20160502193508) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.text     "content",    null: false
+    t.string   "title"
+    t.text     "content",                null: false
+    t.integer  "type",       default: 0, null: false
     t.integer  "idea_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["idea_id"], name: "index_notes_on_idea_id"
   end
 
