@@ -1,9 +1,25 @@
 class Task extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    }
+
+    handleCheckboxChange(e) {
+        console.log(e.target.checked);
+        this.setState({completed: e.target.checked});
+        // this.props.onTaskUpdate({completed: completed})
+    }
+
     render() {
         return (
-            <div className="task">
-                <div>Completed: {this.props.completed}</div>
-                <div classname="task-title">{this.props.title}</div>
+            <div className="task-item">
+                <div className="task-content">
+                    <label className="task-title">
+                        <input type="checkbox" onChange={this.handleCheckboxChange}/>
+                        {' '}
+                        {this.props.title}
+                    </label>
+                </div>
             </div>
         );
     }
@@ -14,7 +30,7 @@ class TaskList extends React.Component {
         console.log(this.props.tasks);
         let tasks = this.props.tasks.map(function(task) {
             return (
-                <Task key={task.id} completed={task.completed} title={task.title} />
+                <Task key={task.id} completed={task.completed} title={task.title}/>
             );
         });
 
@@ -62,7 +78,7 @@ class TaskBox extends React.Component {
         this.handleTaskSubmit = this.handleTaskSubmit.bind(this);
     }
 
-    loadCommentsFromServer() {
+    loadTasksFromServer() {
         $.ajax({
             url: this.props.url,
             method: "GET",
@@ -81,7 +97,6 @@ class TaskBox extends React.Component {
         let tasks = this.state.tasks;
         task.id = Date.now();
         let newTasks = tasks.concat([task]);
-        console.log(newTasks);
         this.setState(newTasks);
 
         $.ajax({
@@ -89,7 +104,7 @@ class TaskBox extends React.Component {
             method: "POST",
             data: {task: task},
             success: (data) => {
-                this.loadCommentsFromServer();
+                this.loadTasksFromServer();
             },
             error: (xhr, status, err) =>  {
                 this.setState({tasks: tasks});
@@ -101,7 +116,7 @@ class TaskBox extends React.Component {
     render() {
         return (
           <div className="task-box">
-            <h1>Tasks</h1>
+            <h1>What should I do?</h1>
             <TaskList tasks={this.state.tasks}/>
             <TaskForm onTaskSubmit={this.handleTaskSubmit}/>
           </div>
