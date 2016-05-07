@@ -6,19 +6,15 @@
     <%= form_for @user do |f| %>
         <%= render 'shared/error_messages' %>
 
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, placeholder: 'Name', class: 'form-control', autofocus: true %>
         <br>
-        <%= f.label :email %>
-        <%= f.email_field :email %>
+        <%= f.email_field :email, placeholder: 'E-mail', class: 'form-control' %>
         <br>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
         <br>
-        <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.password_field :password_confirmation %>
+        <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'form-control' %>
         <br>
-        <%= f.submit "Create my account", class: "btn btn-primary" %>
+        <%= f.submit "Create account", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

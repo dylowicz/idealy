@@ -3,7 +3,7 @@
 <%= form_for :idea, url: ideas_path do |f| %>
     <p>
       <%= f.label :title %><br>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, autofocus: true %>
     </p>
 
     <p>

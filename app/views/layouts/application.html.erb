@@ -10,20 +10,39 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <h1> <%= current_user.email %></h1>
-      <p><%= session[:user_id] %></p>
-    <% end%>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to 'IDEALY', root_path, class: "navbar-brand" %>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="glyphicon glyphicon-user"></span>
+                <%= current_user.name %>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Log out', logout_path, method: :delete %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Sign in', login_path %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
     <div class="container">
       <% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
+
       <%= yield %>
-      <% if not logged_in? %>
-        <%= link_to 'Log in', login_path %>
-      <% else %>
-        <%= link_to 'Log out', logout_path, method: :delete %>
-      <% end %>
+
       <%= debug(params) if Rails.env.development? %>
     </div>
   </body>

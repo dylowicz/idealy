@@ -1,24 +1,20 @@
-<h1>Ideas index</h1>
+<h1>Ideas</h1>
 
-<%= link_to 'Create an idea', new_idea_path %>
 
-<table id="ideas">
-  <tr>
-    <th>Title</th>
-    <th>Status</th>
-    <th>Score</th>
-    <th>Created at</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <% @ideas.each do |idea| %>
-    <tr>
-      <td><%= link_to idea.title, idea_path(idea) %></td>
-      <td><%= idea.status %></td>
-      <td><%= idea.score %></td>
-      <td><%= idea.created_at %></td>
-      <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-      <td><%= link_to 'Delete', idea_path(idea), method: :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<% unless @ideas.empty? %>
+  <div class="well">
+    <div class="list-group" id="idea-list">
+      <% @ideas.each do |idea| %>
+        <%= link_to idea_path(idea), class: "list-group-item" do%>
+          <p class="list-group-item-text"><%= idea.title %></p>
+          <%= link_to 'Edit', edit_idea_path(idea) %>
+          <%= link_to 'Delete', idea_path(idea), method: :delete %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <p>You have no ideas yet.</p>
+<% end %>
+
+<%= link_to 'Create an idea', new_idea_path, class: 'btn btn-primary' %>

@@ -3,7 +3,7 @@
 <%= form_for(@task, url: idea_task_path(@task.idea, @task), method: :patch) do |f| %>
     <p>
       <%= f.label :title %><br>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, autofocus: true %>
     </p>
 
     <p>

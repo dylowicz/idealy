@@ -1,3 +1,22 @@
 // Place all the styles related to the ideas controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+textarea {
+  resize: vertical;
+}
+
+.list-group-item-unstyled {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.list-group-item-unstyled:last-child {
+  margin-bottom: 0;
+}
+
+.checkbox {
+  margin: 0;
+}

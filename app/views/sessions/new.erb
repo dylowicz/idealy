@@ -6,11 +6,11 @@
     <%= form_for(:session, url: login_path) do |f| %>
 
         <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-        <br>
+        <%= f.email_field :email, class: 'form-control', autofocus: true %>
+        <br/>
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control' %>
-        <br>
+        <br/>
         <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
 
