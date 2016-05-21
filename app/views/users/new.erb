@@ -1,20 +1,20 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @user do |f| %>
-        <%= render 'shared/error_messages' %>
+    <h1 class="text-center">Sign up</h1>
+    <div class="well">
+      <%= form_for @user do |f| %>
+          <%= render 'shared/error_messages' %>
 
-        <%= f.text_field :name, placeholder: 'Name', class: 'form-control', autofocus: true %>
-        <br>
-        <%= f.email_field :email, placeholder: 'E-mail', class: 'form-control' %>
-        <br>
-        <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
-        <br>
-        <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'form-control' %>
-        <br>
-        <%= f.submit "Create account", class: "btn btn-primary" %>
-    <% end %>
+          <%= f.text_field :name, placeholder: 'Name', class: 'form-control', autofocus: true %>
+          <br>
+          <%= f.email_field :email, placeholder: 'E-mail', class: 'form-control' %>
+          <br>
+          <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+          <br>
+          <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'form-control' %>
+          <br>
+          <%= f.submit "Create account", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>

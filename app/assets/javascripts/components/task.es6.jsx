@@ -16,8 +16,7 @@ class Task extends React.Component {
                 <div className="task-content">
                     <label className="task-title">
                         <input type="checkbox" onChange={this.handleCheckboxChange}/>
-                        {' '}
-                        {this.props.title}
+                        {' '}{this.props.title}
                     </label>
                 </div>
             </div>
@@ -28,7 +27,7 @@ class Task extends React.Component {
 class TaskList extends React.Component {
     render() {
         console.log(this.props.tasks);
-        let tasks = this.props.tasks.map(function(task) {
+        let tasks = this.props.tasks.map((task) => {
             return (
                 <Task key={task.id} completed={task.completed} title={task.title}/>
             );
@@ -58,7 +57,7 @@ class TaskForm extends React.Component {
         e.preventDefault();
         let title = this.state.title.trim();
         if (!title) return;
-        this.props.onTaskSubmit({title: title, completed: false});
+        this.props.onTaskSubmit({title: title, completed: this.state.completed});
         this.setState({title: ''})
     }
 

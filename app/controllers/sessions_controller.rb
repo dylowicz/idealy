@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user
       if @user.authenticate(params[:session][:password])
         log_in @user
-        flash[:success] = 'Sucessfully logged in.'
+        flash[:success] = 'Successfully logged in.'
         redirect_to ideas_path
       else
         flash.now[:danger] = 'Wrong password provided.'
