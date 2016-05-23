@@ -42,7 +42,7 @@
   <div class="col-md-4">
     <div class="container-fluid">
       <h2>Tasks</h2>
-      <%= react_component("TaskBoxContainer", {url: idea_tasks_path(@idea)}) %>
+      <%= react_component("TaskBoxContainer", {tasks: @idea.tasks, url: idea_tasks_path(@idea)}) %>
     </div>
   </div>
 

@@ -1,7 +1,7 @@
 class TaskBoxContainer extends React.Component {
-    constructor() {
-        super();
-        this.state = {tasks: []};
+    constructor(props) {
+        super(props);
+        this.state = {tasks: this.props.tasks};
 
         this.onTaskSubmit = this.onTaskSubmit.bind(this);
         this.onTaskClick = this.onTaskClick.bind(this);
