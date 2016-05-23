@@ -27,7 +27,11 @@ class TasksController < ApplicationController
     @task = idea.tasks.find(params[:id])
     @task.update(task_params)
 
-    redirect_to @idea
+    if request.xhr?
+      render json: { task: @task }
+    else
+      redirect_to @idea
+    end
   end
 
   def destroy
@@ -43,6 +47,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:title)
+      params.require(:task).permit(:title, :completed)
     end
 end
