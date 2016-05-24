@@ -1,4 +1,4 @@
-class TaskBoxContainer extends React.Component {
+class TaskBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {tasks: this.props.tasks};
@@ -24,14 +24,6 @@ class TaskBoxContainer extends React.Component {
             title: title.trim(),
             completed: false
         };
-
-        // does not work for some reason even when backend has injected delay in response :/
-        // let tmpTask = Object.assign({id: Date.now()}, newTask);
-        // console.log(newTask);
-        // console.log(tmpTask);
-        // const actualTasks = this.state.tasks;
-        // const newTasks = actualTasks.concat([tmpTask]);
-        // this.setState(newTasks);
 
         this._createTask(this.props.url, {task: newTask});
     }
@@ -81,10 +73,6 @@ class TaskBoxContainer extends React.Component {
     }
 
     _updateTask(url, data) {
-        // does not reload immediately for some reason
-        // $.when(Request.patch(url, data)).done(() => {
-        //     this._loadTasksFromServer();
-        // });
         $.ajax({
             url: url,
             method: 'PATCH',
@@ -114,7 +102,7 @@ class TaskBoxContainer extends React.Component {
         return (
             <div className="tasks-box well">
                 { this.state.tasks.length === 0 ?
-                    <p className="text-center">There's nothing to do!</p> :
+                    <p className="text-info text-center">There's nothing to do!</p> :
                     <TaskList tasks={this.state.tasks} onTaskClick={this.onTaskClick} onTaskDeleteClick={this.onTaskDeleteClick}/>
                 }
                 <TaskForm onTaskSubmit={this.onTaskSubmit}/>
