@@ -24,3 +24,21 @@ textarea {
 .checkbox {
   margin: 0;
 }
+
+#task #delete-task {
+  display: none;
+}
+
+#task:hover #delete-task {
+  display: block;
+  margin-top: 2px;
+  margin-right: 3px;
+}
+
+#delete-task {
+  opacity: 0.5;
+}
+
+#delete-task:hover {
+  opacity: 1.0;
+}
