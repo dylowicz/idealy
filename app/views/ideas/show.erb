@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <h1>Idea</h1>
       <div class="well">
-        <strong><%= @idea.title %></strong>
+        <h4 class="lead"><%= @idea.title %></h4>
         <p><%= @idea.description %></p>
         <%= link_to 'Edit', edit_idea_path(@idea) %>
         <%= link_to 'Delete', idea_path(@idea), method: :delete %>
@@ -14,17 +14,11 @@
 
 <div class="row">
   <div class="col-md-8">
-    <div class="container-fluid">
-      <h2>Thoughts</h2>
       <%= react_component("NotesBox", {notes: @idea.notes, url: idea_notes_path(@idea)}) %>
-    </div>
     <%= link_to 'Back', ideas_path %>
   </div>
 
   <div class="col-md-4">
-    <div class="container-fluid">
-      <h2>Tasks</h2>
       <%= react_component("TasksBox", {tasks: @idea.tasks, url: idea_tasks_path(@idea)}) %>
-    </div>
   </div>
 </div>

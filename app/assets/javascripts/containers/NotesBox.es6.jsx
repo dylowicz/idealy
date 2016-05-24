@@ -88,12 +88,15 @@ class NotesBox extends React.Component {
 
     render() {
         return (
-            <div className="notes-box well">
-                { this.state.notes.length === 0 ?
-                    <p className="text-info text-center">Nothing has been said, yet!</p> :
-                    <NoteList notes={this.state.notes} onNoteDeleteClick={this.onNoteDeleteClick}/>
-                }
-                <NoteForm onNoteSubmit={this.onNoteSubmit}/>
+            <div className="notes-box container-fluid">
+                <h3 className="text-center">Thoughts</h3>
+                <div className="well">
+                    { this.state.notes.length === 0 ?
+                        <p className="text-muted text-center">Nothing has been said, yet!</p> :
+                        <NoteList notes={this.state.notes} onNoteDeleteClick={this.onNoteDeleteClick}/>
+                    }
+                    <NoteForm onNoteSubmit={this.onNoteSubmit}/>
+                </div>
             </div>
         );
     }

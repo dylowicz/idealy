@@ -1,5 +1,5 @@
 const NoteList = ({notes, onNoteDeleteClick}) => (
-    <div className="list-group" id="note-list">
+    <ul className="list-unstyled" id="note-list">
         {
             notes.map(note =>
                 <Note
@@ -9,5 +9,5 @@ const NoteList = ({notes, onNoteDeleteClick}) => (
                 />
             )
         }
-    </div>
+    </ul>
 );
