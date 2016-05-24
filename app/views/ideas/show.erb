@@ -18,26 +18,26 @@
   <div class="col-md-8">
     <div class="container-fluid">
       <h2>Thoughts</h2>
-      <!-- <%= react_component("NotesBox", {notes: @idea.notes, url: idea_notes_path(@idea)}) %> -->
-      <div class="well">
-        <div class="list-group" id="note-list">
-          <% @idea.notes.each do |note| %>
-            <div class="list-group-item">
-              <p class="list-group-item-text"><%= note.content %></p>
-              <%= link_to 'Edit', edit_idea_note_path(note.idea, note) %>
-              <%= link_to 'Delete', idea_note_path(note.idea, note), method: :delete %>
-            </div>
-            <br/>
-          <% end %>
-        </div>
-        <%= form_for([@idea, @idea.notes.build]) do |f| %>
-            <div class="form-group">
+      <%= react_component("NotesBox", {notes: @idea.notes, url: idea_notes_path(@idea)}) %>
+      <!--<div class="well">-->
+        <!--<div class="list-group" id="note-list">-->
+          <!--<% @idea.notes.each do |note| %>-->
+              <!--<div class="list-group-item">-->
+                <!--<p class="list-group-item-text"><%= note.content %></p>-->
+                <!--<%= link_to 'Edit', edit_idea_note_path(note.idea, note) %>-->
+                <!--<%= link_to 'Delete', idea_note_path(note.idea, note), method: :delete %>-->
+              <!--</div>-->
+              <!--<br/>-->
+          <!--<% end %>-->
+        <!--</div>-->
+        <!--<%= form_for([@idea, @idea.notes.build]) do |f| %>-->
+            <!--<div class="form-group">-->
               <%= f.label :content, class: 'sr-only' %><br>
-              <%= f.text_area :content, class: 'form-control', id: 'add-note', placeholder: 'Enter your thought' %>
-            </div>
-            <%= f.submit class: 'btn btn-primary' %>
-        <% end %>
-      </div>
+              <!--<%= f.text_area :content, class: 'form-control', id: 'add-note', placeholder: 'Enter your thought' %>-->
+            <!--</div>-->
+            <!--<%= f.submit class: 'btn btn-primary' %>-->
+        <!--<% end %>-->
+      <!--</div>-->
     </div>
     <%= link_to 'Back', ideas_path %>
   </div>
@@ -46,7 +46,7 @@
   <div class="col-md-4">
     <div class="container-fluid">
       <h2>Tasks</h2>
-      <%= react_component("TaskBox", {tasks: @idea.tasks, url: idea_tasks_path(@idea)}) %>
+      <%= react_component("TasksBox", {tasks: @idea.tasks, url: idea_tasks_path(@idea)}) %>
     </div>
   </div>
 

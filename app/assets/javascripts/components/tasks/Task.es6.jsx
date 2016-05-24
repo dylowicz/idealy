@@ -1,4 +1,4 @@
-const Task = ({onTaskClick, onTaskDeleteClick, completed, title}) => (
+const Task = ({title, completed, onTaskClick, onTaskDeleteClick}) => (
     <li className="list-group-item-unstyled">
         <div className="checkbox" id="task">
             <label onClick={onTaskClick} style={ {textDecoration: completed ? 'line-through' : 'none'} }>

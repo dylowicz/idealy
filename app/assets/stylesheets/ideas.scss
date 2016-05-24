@@ -29,6 +29,7 @@ textarea {
   display: none;
 }
 
+
 #task:hover #delete-task {
   display: block;
   margin-top: 2px;
@@ -40,5 +41,24 @@ textarea {
 }
 
 #delete-task:hover {
+  opacity: 1.0;
+}
+
+
+#note #delete-note {
+  display: none;
+}
+
+#note:hover #delete-note {
+  display: block;
+  margin-top: 2px;
+  margin-right: 3px;
+}
+
+#delete-note {
+  opacity: 0.5;
+}
+
+#delete-note:hover {
   opacity: 1.0;
 }
