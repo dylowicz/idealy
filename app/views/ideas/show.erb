@@ -13,9 +13,12 @@
 </div>
 
 <div class="row">
+
+  <!-- Notes -->
   <div class="col-md-8">
     <div class="container-fluid">
       <h2>Thoughts</h2>
+      <!-- <%= react_component("NotesBox", {notes: @idea.notes, url: idea_notes_path(@idea)}) %> -->
       <div class="well">
         <div class="list-group" id="note-list">
           <% @idea.notes.each do |note| %>
@@ -36,69 +39,15 @@
         <% end %>
       </div>
     </div>
-    <!--<%= react_component("TaskBox", {tasks: @idea.tasks, url: idea_tasks_path(@idea)}) %>-->
     <%= link_to 'Back', ideas_path %>
   </div>
 
+  <!-- Tasks -->
   <div class="col-md-4">
     <div class="container-fluid">
       <h2>Tasks</h2>
-      <div class="well">
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-target="#new-tasks" data-toggle="tab">New</a></li>
-          <li><a data-target="#completed-tasks" data-toggle="tab">Completed</a></li>
-        </ul>
-
-        <div class="tab-content">
-          <div class="tab-pane active" id="new-tasks">
-            <% unless @idea.tasks.where(completed: false).empty? %>
-              <ul class="list-unstyled checked-list-box">
-                <% @idea.tasks.where(completed: false).each do |task| %>
-                  <li class="list-group-item-unstyled">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" value=""/>
-                        <%= task.title %>
-                        <%= link_to 'Edit', edit_idea_task_path(task.idea, task) %>
-                        <%= link_to 'Delete', idea_task_path(task.idea, task), method: :delete %>
-                      </label>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
-            <% else %>
-              <p class="text-info text-center">There are no tasks yet.</p>
-            <% end %>
-            <%= form_for([@idea, @idea.tasks.build], html: {class: 'form-inline'}) do |f| %>
-                <div class="form-group">
-                  <%= f.label :title, class: 'sr-only' %>
-                  <%= f.text_field :title, class: 'form-control', id: 'add-task', placeholder: 'Add a new task' %>
-                </div>
-                <%= f.submit class: 'btn btn-primary' %>
-            <% end %>
-          </div>
-          <div class="tab-pane" id="completed-tasks">
-            <% unless @idea.tasks.where(completed: true).empty? %>
-              <ul class="list-unstyled checked-list-box">
-                <% @idea.tasks.where(completed: true).each do |task| %>
-                  <li class="list-group-item-unstyled">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" value="" checked/>
-                        <%= task.title %>
-                        <%= link_to 'Edit', edit_idea_task_path(task.idea, task) %>
-                        <%= link_to 'Delete', idea_task_path(task.idea, task), method: :delete %>
-                      </label>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
-            <% else %>
-              <p class="text-info text-center">There are no completed tasks yet.</p>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= react_component("TaskBox", {tasks: @idea.tasks, url: idea_tasks_path(@idea)}) %>
     </div>
   </div>
+
 </div>
