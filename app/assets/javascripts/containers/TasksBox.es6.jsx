@@ -99,13 +99,21 @@ class TasksBox extends React.Component {
     }
 
     render() {
+        let numberOfNotCompletedTasks = this.state.tasks.filter(x => !x.completed).length;
+
         return (
-            <div className="tasks-box well">
-                { this.state.tasks.length === 0 ?
-                    <p className="text-info text-center">There's nothing to do!</p> :
-                    <TaskList tasks={this.state.tasks} onTaskClick={this.onTaskClick} onTaskDeleteClick={this.onTaskDeleteClick}/>
-                }
-                <TaskForm onTaskSubmit={this.onTaskSubmit}/>
+            <div className="tasks-box container-fluid">
+                <h3 className="text-center">
+                    Tasks{' '}
+                    { numberOfNotCompletedTasks === 0 ? null : <span className="badge">{numberOfNotCompletedTasks}</span> }
+                </h3>
+                <div className="well">
+                    { this.state.tasks.length === 0 ?
+                        <p className="text-muted text-center">There's nothing to do!</p> :
+                        <TaskList tasks={this.state.tasks} onTaskClick={this.onTaskClick} onTaskDeleteClick={this.onTaskDeleteClick}/>
+                    }
+                    <TaskForm onTaskSubmit={this.onTaskSubmit}/>
+                </div>
             </div>
         );
     }
