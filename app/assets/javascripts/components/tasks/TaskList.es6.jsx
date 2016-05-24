@@ -1,11 +1,12 @@
-const TaskList = ({tasks, onTaskClick}) => (
+const TaskList = ({tasks, onTaskClick, onTaskDeleteClick}) => (
     <ul className="list-unstyled checked-list-box">
         {
             tasks.map(task =>
                 <Task
                     key={task.id}
                     {...task}
-                    onClick={(event) => onTaskClick(event, task.id)}
+                    onTaskClick={(event) => onTaskClick(event, task.id)}
+                    onTaskDeleteClick={() => onTaskDeleteClick(task.id)}
                 />
             )
         }

@@ -5,13 +5,15 @@ class TaskBoxContainer extends React.Component {
 
         this.onTaskSubmit = this.onTaskSubmit.bind(this);
         this.onTaskClick = this.onTaskClick.bind(this);
-        this._loadTasksFromServer = this._loadTasksFromServer.bind(this);
+        this.onTaskDeleteClick = this.onTaskDeleteClick.bind(this);
+        this._getTasks = this._getTasks.bind(this);
         this._createTask = this._createTask.bind(this);
         this._updateTask = this._updateTask.bind(this);
+        this._deleteTask = this._deleteTask.bind(this);
     }
 
     componentDidMount() {
-        this._loadTasksFromServer();
+        this._getTasks();
     }
 
     onTaskSubmit(event, title) {
@@ -44,14 +46,22 @@ class TaskBoxContainer extends React.Component {
         this._updateTask(this.props.url + '/' + id, {task: editedTask});
     }
 
-    _loadTasksFromServer() {
+    onTaskDeleteClick(id) {
+        this._deleteTask(this.props.url + '/' + id);
+    }
+
+    _getTasks() {
         $.ajax({
             url: this.props.url,
-            method: "GET",
+            method: 'GET',
             dataType: 'json',
             cache: false,
             success: (tasks) => {
                 this.setState({tasks: tasks});
+            },
+            error: (xhr, status, err) =>  {
+                this.setState({tasks: this.state.tasks});
+                console.error(url, status, err.toString());
             }
         });
     }
@@ -60,8 +70,9 @@ class TaskBoxContainer extends React.Component {
         $.ajax({
             url: url,
             method: 'POST',
+            dataType: 'json',
             data: data,
-            success: () => this._loadTasksFromServer(),
+            success: () => this._getTasks(),
             error: (xhr, status, err) =>  {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
@@ -77,9 +88,21 @@ class TaskBoxContainer extends React.Component {
         $.ajax({
             url: url,
             method: 'PATCH',
-            data: data,
             dataType: 'json',
-            success: () => this._loadTasksFromServer(),
+            data: data,
+            success: () => this._getTasks(),
+            error: (xhr, status, err) =>  {
+                this.setState({tasks: this.state.tasks});
+                console.error(url, status, err.toString());
+            }
+        });
+    }
+
+    _deleteTask(url) {
+        $.ajax({
+            url: url,
+            method: 'DELETE',
+            success: () => this._getTasks(),
             error: (xhr, status, err) =>  {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
@@ -90,7 +113,10 @@ class TaskBoxContainer extends React.Component {
     render() {
         return (
             <div className="tasks-box well">
-                <TaskList tasks={this.state.tasks} onTaskClick={this.onTaskClick}/>
+                { this.state.tasks.length === 0 ?
+                    <p className="text-center">There's nothing to do!</p> :
+                    <TaskList tasks={this.state.tasks} onTaskClick={this.onTaskClick} onTaskDeleteClick={this.onTaskDeleteClick}/>
+                }
                 <TaskForm onTaskSubmit={this.onTaskSubmit}/>
             </div>
         );
