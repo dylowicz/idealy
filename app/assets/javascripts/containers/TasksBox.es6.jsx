@@ -99,13 +99,13 @@ class TasksBox extends React.Component {
     }
 
     render() {
-        let numberOfNotCompletedTasks = this.state.tasks.filter(x => !x.completed).length;
+        const numberOfNotCompletedTasks = this.state.tasks.filter(task => !task.completed).length;
 
         return (
             <div className="tasks-box container-fluid">
                 <h3 className="text-center">
                     Tasks{' '}
-                    { numberOfNotCompletedTasks === 0 ? null : <span className="badge">{numberOfNotCompletedTasks}</span> }
+                    { numberOfNotCompletedTasks > 0 ? <span className="badge" id="task-count">{numberOfNotCompletedTasks}</span> : null }
                 </h3>
                 <div className="well">
                     { this.state.tasks.length === 0 ?
