@@ -1,3 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "ideas";
+@import "notes";
+
+body {
+  padding-top: 70px;
+}

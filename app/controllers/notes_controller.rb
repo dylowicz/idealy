@@ -1,4 +1,14 @@
 class NotesController < ApplicationController
+  def index
+    @notes = idea.notes
+
+    if request.xhr?
+      render json: @notes
+    else
+      redirect_to @idea
+    end
+  end
+
   def edit
     @note = idea.notes.find(params[:id])
   end
@@ -6,14 +16,22 @@ class NotesController < ApplicationController
   def create
     @note = idea.notes.create(note_params)
 
-    redirect_to @idea
+    if request.xhr?
+      render json: @note
+    else
+      redirect_to @idea
+    end
   end
 
   def update
     @note = idea.notes.find(params[:id])
     @note.update(note_params)
 
-    redirect_to @idea
+    if request.xhr?
+      render json: @note
+    else
+      redirect_to @idea
+    end
   end
 
   def destroy

@@ -1,4 +1,4 @@
-class TaskBox extends React.Component {
+class TasksBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {tasks: this.props.tasks};
@@ -30,7 +30,7 @@ class TaskBox extends React.Component {
 
     onTaskClick(event, id) {
         event.preventDefault();
-        const task = this.state.tasks.find(task => task.id === id)
+        const task = this.state.tasks.find(task => task.id === id);
         const editedTask = {
             id: id,
             completed: !task.completed
@@ -99,13 +99,21 @@ class TaskBox extends React.Component {
     }
 
     render() {
+        const numberOfNotCompletedTasks = this.state.tasks.filter(task => !task.completed).length;
+
         return (
-            <div className="tasks-box well">
-                { this.state.tasks.length === 0 ?
-                    <p className="text-info text-center">There's nothing to do!</p> :
-                    <TaskList tasks={this.state.tasks} onTaskClick={this.onTaskClick} onTaskDeleteClick={this.onTaskDeleteClick}/>
-                }
-                <TaskForm onTaskSubmit={this.onTaskSubmit}/>
+            <div className="tasks-box container-fluid">
+                <h3 className="text-center">
+                    Tasks{' '}
+                    { numberOfNotCompletedTasks > 0 ? <span className="badge" id="task-count">{numberOfNotCompletedTasks}</span> : null }
+                </h3>
+                <div className="well">
+                    { this.state.tasks.length === 0 ?
+                        <p className="text-muted text-center">There's nothing to do!</p> :
+                        <TaskList tasks={this.state.tasks} onTaskClick={this.onTaskClick} onTaskDeleteClick={this.onTaskDeleteClick}/>
+                    }
+                    <TaskForm onTaskSubmit={this.onTaskSubmit}/>
+                </div>
             </div>
         );
     }
