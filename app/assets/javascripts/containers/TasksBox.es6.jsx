@@ -30,7 +30,7 @@ class TasksBox extends React.Component {
 
     onTaskClick(event, id) {
         event.preventDefault();
-        const task = this.state.tasks.find(task => task.id === id)
+        const task = this.state.tasks.find(task => task.id === id);
         const editedTask = {
             id: id,
             completed: !task.completed

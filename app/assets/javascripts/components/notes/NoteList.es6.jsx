@@ -1,10 +1,11 @@
-const NoteList = ({notes, onNoteDeleteClick}) => (
+const NoteList = ({notes, onNoteEditSaveClick, onNoteDeleteClick}) => (
     <div className="list-unstyled" id="note-list">
         {
             notes.map(note =>
-                <Note
+                <NoteContainer
                     key={note.id}
-                    {...note}
+                    note={note}
+                    onNoteEditSaveClick={onNoteEditSaveClick}
                     onNoteDeleteClick={() => onNoteDeleteClick(note.id)}
                 />
             )

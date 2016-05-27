@@ -1,9 +1,12 @@
 class NotesBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {notes: this.props.notes};
+        this.state = {
+            notes: this.props.notes
+        };
 
-        this.onNoteSubmit = this.onNoteSubmit.bind(this);
+        this.onNoteNewSubmit = this.onNoteNewSubmit.bind(this);
+        this.onNoteEditSaveClick = this.onNoteEditSaveClick.bind(this);
         this.onNoteDeleteClick = this.onNoteDeleteClick.bind(this);
         this._getNotes = this._getNotes.bind(this);
         this._createNote = this._createNote.bind(this);
@@ -15,19 +18,28 @@ class NotesBox extends React.Component {
         this._getNotes();
     }
 
-    onNoteSubmit(event, content) {
+    onNoteNewSubmit(event, content) {
         event.preventDefault();
         $('#add-note').val('');
         if (content.trim() === "") return;
         const newNote = {
             content: content.trim()
         };
-
         this._createNote(this.props.url, {note: newNote});
     }
 
+    onNoteEditSaveClick(id, content) {
+        if (content.trim() === "") return;
+        const editedNote = {
+            id: id,
+            content: content
+        };
+        this._updateNote(`${this.props.url}/${id}`, {note: editedNote});
+    }
+
+
     onNoteDeleteClick(id) {
-        this._deleteNote(this.props.url + '/' + id);
+        this._deleteNote(`${this.props.url}/${id}`);
     }
 
     _getNotes() {
@@ -93,9 +105,13 @@ class NotesBox extends React.Component {
                 <div className="well">
                     { this.state.notes.length === 0 ?
                         <p className="text-muted text-center">Nothing has been said, yet!</p> :
-                        <NoteList notes={this.state.notes} onNoteDeleteClick={this.onNoteDeleteClick}/>
+                        <NoteList
+                            notes={this.state.notes}
+                            onNoteEditSaveClick={this.onNoteEditSaveClick}
+                            onNoteDeleteClick={this.onNoteDeleteClick}
+                        />
                     }
-                    <NoteForm onNoteSubmit={this.onNoteSubmit}/>
+                    <NoteForm onNoteSubmit={this.onNoteNewSubmit}/>
                 </div>
             </div>
         );
