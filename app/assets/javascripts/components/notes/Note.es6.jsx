@@ -1,12 +1,6 @@
-const Note = ({title, content, created_at, onNoteEditContentClick, onNoteSaveClick, onNoteDeleteClick, inEditMode, inputHeight}) => {
+const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onNoteDeleteClick, inEditMode, inputHeight}) => {
     let input;
-
-    const panelHeading = <div
-        className="panel-heading"
-        id="note-heading">
-        {title}
-    </div>;
-
+    
     const panelBody = <div
         onDoubleClick={(event) => onNoteEditContentClick(event)}
         className="panel-body"
@@ -42,7 +36,6 @@ const Note = ({title, content, created_at, onNoteEditContentClick, onNoteSaveCli
 
     return (
         <div className="panel panel-primary" id="note">
-            { title ? panelHeading : null }
             { inEditMode ? textarea : panelBody }
             <div className="panel-footer" id="note-footer">
                 { inEditMode ? saveButton : dateSpan }
