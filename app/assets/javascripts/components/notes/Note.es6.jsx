@@ -1,8 +1,8 @@
 const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onNoteDeleteClick, inEditMode, inputHeight}) => {
     let input;
-    
+
     const panelBody = <div
-        onDoubleClick={(event) => onNoteEditContentClick(event)}
+        onDoubleClick={event => onNoteEditContentClick(event)}
         className="panel-body"
         id="note-content">
         {content}

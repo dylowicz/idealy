@@ -28,7 +28,7 @@ class NoteContainer extends React.Component {
             <Note
                 {...this.props.note}
                 onNoteEditContentClick={this.onNoteEditContentClick}
-                onNoteSaveClick={(content) => this.onNoteSaveClick(this.props.note.id, content)}
+                onNoteSaveClick={content => this.onNoteSaveClick(this.props.note.id, content)}
                 onNoteDeleteClick={this.props.onNoteDeleteClick}
                 inEditMode={this.state.inEditMode}
                 inputHeight={this.state.inputHeight}
