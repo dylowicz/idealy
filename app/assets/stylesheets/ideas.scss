@@ -33,40 +33,28 @@ blockquote footer:before {
   margin: 0;
 }
 
-#task #delete-task {
+#idea-box #idea-action-footer {
   display: none;
 }
 
-
-#task:hover #delete-task {
+#idea-box:hover #idea-action-footer {
   display: block;
-  margin-top: 2px;
-  margin-right: 3px;
 }
 
-#delete-task {
+#edit-idea {
   opacity: 0.5;
 }
 
-#delete-task:hover {
+#edit-idea:hover {
   opacity: 1.0;
+  text-decoration: none;
 }
 
-
-#note #delete-note {
-  display: none;
-}
-
-#note:hover #delete-note {
-  display: block;
-  margin-top: 2px;
-  margin-right: 3px;
-}
-
-#delete-note {
+#delete-idea {
   opacity: 0.5;
 }
 
-#delete-note:hover {
+#delete-idea:hover {
   opacity: 1.0;
+  text-decoration: none;
 }

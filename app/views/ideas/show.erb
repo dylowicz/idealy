@@ -1,14 +1,16 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="container-fluid">
-      <h1>Idea</h1>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="container-fluid" id="idea-box">
       <div class="well">
-        <blockquote>
+        <blockquote class="text-center">
           <p class="lead"><%= @idea.title %></p>
-          <footer><%= @idea.description %></footer>
+          <% unless @idea.description.empty? %>
+            <footer><%= @idea.description %></footer>
+          <% end %>
         </blockquote>
-        <%= link_to 'Edit', edit_idea_path(@idea) %>
-        <%= link_to 'Delete', idea_path(@idea), method: :delete %>
+        <footer class="pull-right" id="idea-action-footer">
+          <%= link_to '', edit_idea_path(@idea), class: "glyphicon glyphicon-pencil", id: "edit-idea" %>
+        </footer>
       </div>
     </div>
   </div>
