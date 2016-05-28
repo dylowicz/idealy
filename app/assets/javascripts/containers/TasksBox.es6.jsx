@@ -102,7 +102,7 @@ class TasksBox extends React.Component {
         const numberOfNotCompletedTasks = this.state.tasks.filter(task => !task.completed).length;
 
         return (
-            <div className="tasks-box container-fluid">
+            <div className="container-fluid" id="tasks-box">
                 <h3 className="text-center">
                     Tasks{' '}
                     { numberOfNotCompletedTasks > 0 ? <span className="badge" id="task-count">{numberOfNotCompletedTasks}</span> : null }
