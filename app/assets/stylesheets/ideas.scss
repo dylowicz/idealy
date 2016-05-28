@@ -21,6 +21,14 @@ textarea {
   margin-bottom: 0;
 }
 
+blockquote {
+  border-left: none;
+}
+
+blockquote footer:before {
+  content: none;
+}
+
 .checkbox {
   margin: 0;
 }

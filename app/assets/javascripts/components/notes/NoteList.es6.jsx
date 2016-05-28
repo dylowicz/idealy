@@ -1,5 +1,5 @@
 const NoteList = ({notes, onNoteEditSaveClick, onNoteDeleteClick}) => (
-    <div className="list-unstyled" id="note-list">
+    <div className="list-unstyled" id="notes-list">
         {
             notes.map(note =>
                 <NoteContainer

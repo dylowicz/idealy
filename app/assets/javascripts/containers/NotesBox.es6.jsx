@@ -20,7 +20,7 @@ class NotesBox extends React.Component {
 
     onNoteNewSubmit(event, content) {
         event.preventDefault();
-        $('#add-note').val('');
+        $('#add-note-content').val('');
         if (content.trim() === "") return;
         const newNote = {
             content: content.trim()

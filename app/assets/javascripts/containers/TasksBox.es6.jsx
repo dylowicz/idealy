@@ -18,7 +18,7 @@ class TasksBox extends React.Component {
 
     onTaskSubmit(event, title) {
         event.preventDefault();
-        $('#add-task').val('');
+        $('#add-task-title').val('');
         if (title.trim() === "") return;
         const newTask = {
             title: title.trim(),

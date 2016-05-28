@@ -3,8 +3,10 @@
     <div class="container-fluid">
       <h1>Idea</h1>
       <div class="well">
-        <h4 class="lead"><%= @idea.title %></h4>
-        <p><%= @idea.description %></p>
+        <blockquote>
+          <p class="lead"><%= @idea.title %></p>
+          <footer><%= @idea.description %></footer>
+        </blockquote>
         <%= link_to 'Edit', edit_idea_path(@idea) %>
         <%= link_to 'Delete', idea_path(@idea), method: :delete %>
       </div>
