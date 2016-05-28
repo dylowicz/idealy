@@ -8,6 +8,7 @@ class NoteContainer extends React.Component {
 
         this.onNoteEditContentClick = this.onNoteEditContentClick.bind(this);
         this.onNoteSaveClick = this.onNoteSaveClick.bind(this);
+        this.onNoteCancelClick = this.onNoteCancelClick.bind(this);
     }
 
     onNoteEditContentClick(event) {
@@ -23,12 +24,17 @@ class NoteContainer extends React.Component {
         this.setState({ inEditMode: false });
     }
 
+    onNoteCancelClick() {
+        this.setState({ inEditMode: false });
+    }
+
     render() {
         return (
             <Note
                 {...this.props.note}
                 onNoteEditContentClick={this.onNoteEditContentClick}
                 onNoteSaveClick={content => this.onNoteSaveClick(this.props.note.id, content)}
+                onNoteCancelClick={this.onNoteCancelClick}
                 onNoteDeleteClick={this.props.onNoteDeleteClick}
                 inEditMode={this.state.inEditMode}
                 inputHeight={this.state.inputHeight}

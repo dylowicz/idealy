@@ -100,7 +100,7 @@ class NotesBox extends React.Component {
 
     render() {
         return (
-            <div className="notes-box container-fluid">
+            <div className="container-fluid" id="notes-box">
                 <h3 className="text-center">Thoughts</h3>
                 <div className="well">
                     { this.state.notes.length === 0 ?

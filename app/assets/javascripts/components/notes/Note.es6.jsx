@@ -1,4 +1,4 @@
-const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onNoteDeleteClick, inEditMode, inputHeight}) => {
+const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onNoteCancelClick, onNoteDeleteClick, inEditMode, inputHeight}) => {
     let input;
 
     const panelBody = <div
@@ -8,18 +8,6 @@ const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onN
         {content}
     </div>;
 
-    const saveButton = <a
-        onClick={() => onNoteSaveClick(input.value)}
-        id="save-edit-note">
-        Save
-    </a>;
-
-    const dateSpan = <small
-        className="text-muted"
-        id="note-created-at">
-        {new Date(created_at.slice(0, -1)).toLocaleString()}
-    </small>;
-
     const textarea = <textarea
         className="form-control"
         id="edit-note-content"
@@ -28,17 +16,41 @@ const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onN
         ref={node => input = node}
     />;
 
+    const dateSpan = <small
+        className="text-muted"
+        id="note-created-at">
+        {new Date(created_at.slice(0, -1)).toLocaleString()}
+    </small>;
+
+    const saveButton = <a
+        onClick={() => onNoteSaveClick(input.value)}
+        id="save-edit-note">
+        Save
+    </a>;
+
+    const cancelButton = <a
+        onClick={onNoteCancelClick}
+        className="text-muted"
+        id="cancel-edit-note">
+        Cancel
+    </a>;
+
     const deleteButton = <span
         onClick={onNoteDeleteClick}
         className="glyphicon glyphicon-trash pull-right"
         id="delete-note"
     />;
 
+    const editActionButtons = <div
+        style={{display: "inline"}}>
+        {saveButton}{' '}{cancelButton}
+    </div>;
+
     return (
         <div className="panel panel-primary" id="note">
             { inEditMode ? textarea : panelBody }
             <div className="panel-footer" id="note-footer">
-                { inEditMode ? saveButton : dateSpan }
+                { inEditMode ? editActionButtons : dateSpan }
                 {deleteButton}
             </div>
         </div>
