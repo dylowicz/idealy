@@ -1,17 +1,28 @@
-<h1>Ideas</h1>
-
-<% unless @ideas.empty? %>
-  <div class="well">
-    <ul class="list-unstyled" id="ideas-list">
-      <% @ideas.each do |idea| %>
-        <%= link_to idea_path(idea), class: "list-group-item" do%>
-          <p class="list-group-item-text"><%= idea.title %></p>
-        <% end %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1 class="text-center">Ideas</h1>
+    <div class="well">
+      <% unless @ideas.empty? %>
+        <div class="list-group" id="ideas-list">
+          <% @ideas.each do |idea| %>
+            <%= link_to idea_path(idea), class: "list-group-item" do%>
+              <div class="list-group-item-text" style="display: inline;"><%= idea.title %></div>
+              <span class="label label-<%= idea.current_status_css %> pull-right"><%= idea.status.capitalize %></span>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-center text-muted">You have no ideas yet.</p>
       <% end %>
-    </ul>
+      <div class="text-center">
+        <%= link_to new_idea_path, id: 'create-idea' do %>
+            <%= image_tag "idea.svg", id: 'create-idea-icon' %>
+            <br/>
+            Create!
+        <% end %>
+      </div>
+    </div>
   </div>
-<% else %>
-  <p>You have no ideas yet.</p>
-<% end %>
+</div>
 
-<%= link_to 'Create an idea', new_idea_path, class: 'btn btn-primary' %>
+

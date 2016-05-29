@@ -20,16 +20,16 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  # config.images.css_compressor = :sass
 
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  # Do not fallback to images pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+  # Asset digests allow you to set far-future HTTP expiration dates on all images,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # `config.images.precompile` and `config.images.version` have moved to config/initializers/images.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'

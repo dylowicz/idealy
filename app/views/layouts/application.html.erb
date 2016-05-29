@@ -4,7 +4,7 @@
     <title>Idealy</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-
+    <%= favicon_link_tag 'idea.svg', type: 'image/svg' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
   </head>
@@ -13,7 +13,10 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <%= link_to 'IDEALY', root_path, class: "navbar-brand" %>
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <%= image_tag "idea.svg", id: 'navbar-idea-icon' %>
+            IDEALY
+          <% end %>
         </div>
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
@@ -37,9 +40,13 @@
     </nav>
 
     <div class="container">
-      <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <% flash.each do |message_type, message| %>
+            <div class="text-center alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+        </div>
+      </div>
 
       <%= yield %>
 

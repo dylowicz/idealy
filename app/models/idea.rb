@@ -9,4 +9,13 @@ class Idea < ApplicationRecord
   validates :score, presence: true
 
   enum status: [:new, :active, :dropped, :done], _suffix: true
+
+  def current_status_css
+    case status
+      when 'new' then 'info'
+      when 'active' then 'warning'
+      when 'dropped' then 'default'
+      when 'done' then 'success'
+    end
+  end
 end

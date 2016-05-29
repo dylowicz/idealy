@@ -10,15 +10,11 @@ textarea {
   border: none;
 }
 
-.list-group-item-unstyled {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 8px;
-  margin-bottom: 8px;
-}
-
-.list-group-item-unstyled:last-child {
-  margin-bottom: 0;
+#navbar-idea-icon {
+  width: 25px;
+  height: 25px;
+  display: inline;
+  padding-bottom: 3px;
 }
 
 blockquote {
@@ -32,6 +28,29 @@ blockquote footer:before {
 .checkbox {
   margin: 0;
 }
+
+.btn-circle {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+#create-idea {
+  text-decoration: none;
+}
+
+#create-idea-icon {
+  width: 80px;
+  height: 80px;
+  opacity: 0.8;
+}
+
+#create-idea-icon:hover {
+  opacity: 1.0;
+}
+
 
 #idea-box #idea-action-footer {
   display: none;
@@ -51,7 +70,10 @@ blockquote footer:before {
 }
 
 #delete-idea {
+  padding-top: 10px;
+  padding-right: 5px;
   opacity: 0.5;
+  color: red;
 }
 
 #delete-idea:hover {

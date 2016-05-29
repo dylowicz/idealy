@@ -2,10 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.list-group-item-unstyled {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.list-group-item-unstyled:last-child {
+  margin-bottom: 0;
+}
+
 #task #delete-task {
   display: none;
 }
-
 
 #task:hover #delete-task {
   display: block;

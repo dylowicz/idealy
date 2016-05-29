@@ -39,16 +39,16 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-  # Debug mode disables concatenation and preprocessing of assets.
+  # Debug mode disables concatenation and preprocessing of images.
   # This option may cause significant delays in view rendering with a large
-  # number of complex assets.
+  # number of complex images.
   config.assets.debug = true
 
-  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+  # Asset digests allow you to set far-future HTTP expiration dates on all images,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  # Adds additional error checking when serving assets at runtime.
+  # Adds additional error checking when serving images at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
