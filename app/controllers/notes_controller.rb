@@ -2,43 +2,27 @@ class NotesController < ApplicationController
   def index
     @notes = idea.notes
 
-    if request.xhr?
-      render json: @notes
-    else
-      redirect_to @idea
-    end
-  end
-
-  def edit
-    @note = idea.notes.find(params[:id])
+    render status: :ok, json: @notes
   end
 
   def create
     @note = idea.notes.create(note_params)
 
-    if request.xhr?
-      render json: @note
-    else
-      redirect_to @idea
-    end
+    render status: :created, json: @note
   end
 
   def update
     @note = idea.notes.find(params[:id])
     @note.update(note_params)
 
-    if request.xhr?
-      render json: @note
-    else
-      redirect_to @idea
-    end
+    render status: :ok, json: @note
   end
 
   def destroy
     @note = idea.notes.find(params[:id])
     @note.destroy
 
-    redirect_to @idea
+    render status: :no_content, json: {}
   end
 
   private
