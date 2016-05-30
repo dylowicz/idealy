@@ -1,7 +1,7 @@
 class TasksBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {tasks: this.props.tasks};
+        this.state = { tasks: [] };
 
         this.onTaskSubmit = this.onTaskSubmit.bind(this);
         this.onTaskClick = this.onTaskClick.bind(this);

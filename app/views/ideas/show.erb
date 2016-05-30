@@ -19,10 +19,10 @@
 
 <div class="row">
   <div class="col-md-8">
-      <%= react_component("NotesBox", {notes: @idea.notes, url: idea_notes_path(@idea)}) %>
+      <%= react_component("NotesBox", {url: idea_notes_path(@idea)}) %>
   </div>
 
   <div class="col-md-4">
-      <%= react_component("TasksBox", {tasks: @idea.tasks, url: idea_tasks_path(@idea)}) %>
+      <%= react_component("TasksBox", {url: idea_tasks_path(@idea)}) %>
   </div>
 </div>
