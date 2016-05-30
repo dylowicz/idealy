@@ -15,7 +15,7 @@
 
           <div class="form-group">
             <%= f.label :status %><br/>
-            <%= f.select :status, Idea.statuses.keys, {}, { class: 'form-control' } %>
+            <%= f.select :status, Idea.statuses.keys, {}, class: 'form-control', id: 'idea-status-select' %>
           </div>
 
           <div class="form-group">

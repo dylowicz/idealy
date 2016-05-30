@@ -7,6 +7,7 @@
           <% unless @idea.description.empty? %>
             <footer><%= @idea.description %></footer>
           <% end %>
+          <span class="pull-right label label-<%= @idea.current_status_css %>"><%= @idea.status.capitalize %></span>
         </blockquote>
         <footer class="pull-right" id="idea-action-footer">
           <%= link_to '', edit_idea_path(@idea), class: "glyphicon glyphicon-pencil", id: "edit-idea" %>
