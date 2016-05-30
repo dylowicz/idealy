@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 # Use React for Rails
 gem 'react-rails', '~> 1.7.0'
+# User Active Model Serializers
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

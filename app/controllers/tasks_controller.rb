@@ -17,7 +17,7 @@ class TasksController < ApplicationController
     @task = idea.tasks.create(task_params)
 
     if request.xhr?
-      render json: { task: @task }
+      render json: @task
     else
       redirect_to @idea
     end
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
     @task.update(task_params)
 
     if request.xhr?
-      render json: { task: @task }
+      render json: @task
     else
       redirect_to @idea
     end
