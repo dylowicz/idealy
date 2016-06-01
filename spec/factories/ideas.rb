@@ -6,6 +6,5 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence }
     description { Faker::Lorem.paragraph }
     status { "new" }
-    score { 0 }
   end
 end

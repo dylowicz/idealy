@@ -54,7 +54,7 @@ describe IdeasController, type: :controller do
       it { is_expected.to set_flash[:success].to('Idea created!') }
     end
 
-    xcontext "with not valid attributes" do
+    context "with invalid attributes" do
 
     end
   end
@@ -69,10 +69,11 @@ describe IdeasController, type: :controller do
 
       it { is_expected.to respond_with :found }
       it { is_expected.to respond_with_content_type :html }
+      it { is_expected.to redirect_to(idea_path(@idea)) }
       it { is_expected.to set_flash[:success].to('Idea updated!') }
     end
 
-    xcontext "with not valid attributes" do
+    context "with invalid attributes" do
 
     end
   end
@@ -85,6 +86,7 @@ describe IdeasController, type: :controller do
 
     it { is_expected.to respond_with :found }
     it { is_expected.to respond_with_content_type :html }
+    it { is_expected.to redirect_to ideas_path }
     it { is_expected.to set_flash[:success].to('Idea deleted!') }
   end
 end

@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20160502193508) do
     t.string   "title",                   null: false
     t.text     "description"
     t.integer  "status",      default: 0, null: false
-    t.integer  "score",       default: 0, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "user_id"

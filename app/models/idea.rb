@@ -3,7 +3,7 @@ class Idea < ApplicationRecord
   has_many :notes, inverse_of: :idea, dependent: :destroy
   has_many :tasks, inverse_of: :idea, dependent: :destroy
 
-  validates_presence_of :user, :title, :status, :score
+  validates_presence_of :user, :title, :status
 
   enum status: [:new, :active, :dropped, :done], _suffix: true
 
