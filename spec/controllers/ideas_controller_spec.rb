@@ -7,8 +7,7 @@ describe IdeasController, type: :controller do
 
   describe "GET #index" do
     before(:each) do
-      session[:user_id] = @user.id
-      get :index
+      get :index, session: { user_id: @user.id }
     end
 
     it { is_expected.to respond_with :ok }
@@ -18,8 +17,7 @@ describe IdeasController, type: :controller do
   describe "GET #show" do
     before(:all) { @idea = FactoryGirl.create(:idea, user: @user) }
     before(:each) do
-      session[:user_id] = @user.id
-      get :show, params: { id: @idea.id }
+      get :show, params: { id: @idea.id }, session: { user_id: @user.id }
     end
 
     it { is_expected.to respond_with :ok }
@@ -28,8 +26,7 @@ describe IdeasController, type: :controller do
 
   describe "GET #new" do
     before(:each) do
-      session[:user_id] = @user.id
-      get :new
+      get :new, session: { user_id: @user.id }
     end
 
     it { is_expected.to respond_with :ok }
@@ -53,8 +50,8 @@ describe IdeasController, type: :controller do
       end
 
       it { is_expected.to respond_with :found }
-      # it { pry }
       it { is_expected.to respond_with_content_type :html }
+      it { is_expected.to set_flash[:success].to('Idea created!') }
     end
 
     xcontext "with not valid attributes" do
@@ -72,6 +69,7 @@ describe IdeasController, type: :controller do
 
       it { is_expected.to respond_with :found }
       it { is_expected.to respond_with_content_type :html }
+      it { is_expected.to set_flash[:success].to('Idea updated!') }
     end
 
     xcontext "with not valid attributes" do
@@ -87,5 +85,6 @@ describe IdeasController, type: :controller do
 
     it { is_expected.to respond_with :found }
     it { is_expected.to respond_with_content_type :html }
+    it { is_expected.to set_flash[:success].to('Idea deleted!') }
   end
 end
