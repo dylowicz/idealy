@@ -1,10 +1,10 @@
 require 'faker'
 
 FactoryGirl.define do
-  factory :note do |n|
-    n.title { Faker::Lorem.sentence }
-    n.content { Faker::Lorem.paragraph }
-    n.type { "thought" }
-    n.idea { create(:idea) }
+  factory :note do
+    idea
+    title { Faker::Lorem.sentence }
+    content { Faker::Lorem.paragraph }
+    type { "thought" }
   end
 end
