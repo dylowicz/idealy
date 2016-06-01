@@ -22,6 +22,7 @@ class IdeasController < ApplicationController
       flash[:success] = 'Idea created!'
       redirect_to @idea
     else
+      flash.now[:error] = 'Idea could not be created.'
       render 'new'
     end
   end
@@ -33,6 +34,7 @@ class IdeasController < ApplicationController
       flash[:success] = 'Idea updated!'
       redirect_to @idea
     else
+      flash.now[:error] = 'Idea could not be updated.'
       render 'edit'
     end
   end
@@ -42,8 +44,11 @@ class IdeasController < ApplicationController
 
     if @idea.destroy
       flash[:success] = 'Idea deleted!'
+      redirect_to ideas_path
+    else
+      flash[:error] = 'Idea could not be deleted.'
+      redirect_to @idea
     end
-    redirect_to ideas_path
   end
 
   private

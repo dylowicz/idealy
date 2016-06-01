@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  before_filter :require_login
+  before_action :require_login
 
   private
-    def require_login
-      redirect_to login_path unless logged_in?
-    end
+  def require_login
+    render file: "public/401", status: :unauthorized unless logged_in?
+  end
 end
