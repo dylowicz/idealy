@@ -2,6 +2,11 @@ require 'spec_helper'
 
 UNAUTHORIZED_ERROR = { error: "Access denied" }
 
+shared_examples "Validate unauthorized response" do
+  it { is_expected.to respond_with :unauthorized }
+  it { is_expected.to respond_with_content_type :html }
+end
+
 shared_examples "Validate CRUD API" do |object|
   before(:all) do
     @user = FactoryGirl.create(:user)
