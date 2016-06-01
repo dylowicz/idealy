@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 # Use React for Rails
 gem 'react-rails', '~> 1.7.0'
-# User Active Model Serializers
+# Use Active Model Serializers
 gem 'active_model_serializers', '~> 0.10.0'
 
 # Use Capistrano for deployment
@@ -63,6 +63,8 @@ end
 
 group :test do
   gem 'faker'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem "shoulda-kept-respond-with-content-type"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
