@@ -55,7 +55,13 @@ describe IdeasController, type: :controller do
     end
 
     context "with invalid attributes" do
+      before(:each) do
+        post :create, params: { idea: FactoryGirl.attributes_for(:idea, :invalid) }, session: { user_id: @user.id }
+      end
 
+      it { is_expected.to respond_with :ok }
+      it { is_expected.to respond_with_content_type :html }
+      it { is_expected.to set_flash.now[:danger].to('Idea could not be created.') }
     end
   end
 
@@ -74,7 +80,13 @@ describe IdeasController, type: :controller do
     end
 
     context "with invalid attributes" do
+      before(:each) do
+        patch :update, params: { id: @idea.id, idea: FactoryGirl.attributes_for(:idea, :invalid) }, session: { user_id: @user.id }
+      end
 
+      it { is_expected.to respond_with :ok }
+      it { is_expected.to respond_with_content_type :html }
+      it { is_expected.to set_flash.now[:danger].to('Idea could not be updated.') }
     end
   end
 
