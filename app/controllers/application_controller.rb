@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
   before_action :require_login
 
   private
-  def require_login
-    render file: "public/401", status: :unauthorized unless logged_in?
-  end
+    def require_login
+      unless logged_in?
+        respond_to do |format|
+          format.html { render file: "public/401", status: :unauthorized }
+          format.json { render json: { error: 'Access denied' }, status: :unauthorized }
+        end
+      end
+    end
 end
