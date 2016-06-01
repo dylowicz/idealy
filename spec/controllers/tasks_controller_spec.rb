@@ -15,8 +15,7 @@ describe TasksController, type: :controller do
 
     context "as authorized user" do
       before(:each) do
-        session[:user_id] = @user.id
-        get :index, params: { idea_id: @idea.id }, xhr: true
+        get :index, params: { idea_id: @idea.id }, session: { user_id: @user.id }, xhr: true
       end
 
       it { is_expected.to respond_with :ok }
@@ -44,8 +43,7 @@ describe TasksController, type: :controller do
 
     context "as authorized user" do
       before(:each) do
-        session[:user_id] = @user.id
-        post :create, params: { idea_id: @idea.id, task: @task_attributes }, xhr: true
+        post :create, params: { idea_id: @idea.id, task: @task_attributes }, session: { user_id: @user.id }, xhr: true
       end
 
       it { is_expected.to respond_with :created }
@@ -73,8 +71,7 @@ describe TasksController, type: :controller do
 
     context "as authorized user" do
       before(:each) do
-        session[:user_id] = @user.id
-        patch :update, params: { id: @task.id, idea_id: @idea.id, task: @task_attributes }, xhr: true
+        patch :update, params: { id: @task.id, idea_id: @idea.id, task: @task_attributes }, session: { user_id: @user.id },  xhr: true
       end
 
       it { is_expected.to respond_with :ok }
@@ -101,8 +98,7 @@ describe TasksController, type: :controller do
 
     context "as authorized user" do
       before(:each) do
-        session[:user_id] = @user.id
-        delete :destroy, params: { id: @task.id, idea_id: @idea.id }, xhr: true
+        delete :destroy, params: { id: @task.id, idea_id: @idea.id }, session: { user_id: @user.id }, xhr: true
       end
 
       it { is_expected.to respond_with :no_content }
