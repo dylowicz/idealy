@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       flash[:success] = "User #{@user.name} successfully created!"
       redirect_to ideas_path
     else
+      flash.now[:danger] = "User could not be created."
       render 'new'
     end
   end
