@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 # Use React for Rails
 gem 'react-rails', '~> 1.7.0'
+# Use Browserify for Rails
+gem 'browserify-rails', '~> 3.1.0'
 # Use Active Model Serializers
 gem 'active_model_serializers', '~> 0.10.0'
 

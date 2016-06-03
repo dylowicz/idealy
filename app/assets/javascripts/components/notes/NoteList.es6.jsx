@@ -12,3 +12,5 @@ const NoteList = ({notes, onNoteEditSaveClick, onNoteDeleteClick}) => (
         }
     </div>
 );
+
+module.exports = NoteList;

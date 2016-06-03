@@ -1,3 +1,5 @@
+const React = require('react');
+
 class NotesBox extends React.Component {
     constructor(props) {
         super(props);
@@ -115,3 +117,5 @@ class NotesBox extends React.Component {
         );
     }
 }
+
+module.exports = NotesBox;

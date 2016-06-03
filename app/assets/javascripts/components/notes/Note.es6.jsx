@@ -55,4 +55,6 @@ const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onN
             </div>
         </div>
     );
-}
+};
+
+module.exports = Note;

@@ -1,3 +1,5 @@
+const React = require('react');
+
 class NoteContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -42,3 +44,5 @@ class NoteContainer extends React.Component {
         );
     }
 }
+
+module.exports = NoteContainer;

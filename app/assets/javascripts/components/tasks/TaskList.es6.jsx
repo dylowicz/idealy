@@ -12,3 +12,5 @@ const TaskList = ({tasks, onTaskClick, onTaskDeleteClick}) => (
         }
     </ul>
 );
+
+module.exports = TaskList;

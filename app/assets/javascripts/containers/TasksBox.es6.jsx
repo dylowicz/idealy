@@ -1,3 +1,5 @@
+const React = require('react');
+
 class TasksBox extends React.Component {
     constructor(props) {
         super(props);
@@ -118,3 +120,5 @@ class TasksBox extends React.Component {
         );
     }
 }
+
+module.exports = TasksBox;

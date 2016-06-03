@@ -20,3 +20,5 @@ const NoteForm = ({onNoteSubmit}) => {
         </form>
     );
 };
+
+module.exports = NoteForm;

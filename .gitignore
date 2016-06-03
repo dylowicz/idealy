@@ -58,3 +58,6 @@ bower.json
 
 # Idea
 /.idea
+
+# Node
+/node_modules

@@ -9,3 +9,5 @@ const Task = ({title, completed, onTaskClick, onTaskDeleteClick}) => (
         </div>
     </li>
 );
+
+module.exports = Task;

@@ -18,3 +18,5 @@ const TaskForm = ({onTaskSubmit}) => {
         </form>
     );
 };
+
+module.exports = TaskForm;
