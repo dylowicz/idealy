@@ -1,13 +1,12 @@
 require 'spec_helper'
+require_relative 'support/shared_examples'
 
 describe SessionsController, type: :controller do
   before(:all) do
     @user = FactoryGirl.create(:user)
   end
 
-  context "when skip before action" do
-    it { is_expected.not_to use_before_action(:require_login) }
-  end
+  include_examples "Validate skip before action", :require_login
 
   describe "GET #new" do
     context "as authorized user" do

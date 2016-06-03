@@ -8,6 +8,12 @@ shared_examples "Validate before action" do |before_action|
   end
 end
 
+shared_examples "Validate skip before action" do |before_action|
+  context "when skip before action" do
+    it { is_expected.not_to use_before_action(before_action) }
+  end
+end
+
 shared_examples "Validate unauthorized response" do
   it { is_expected.to respond_with :unauthorized }
   it { is_expected.to respond_with_content_type :html }
