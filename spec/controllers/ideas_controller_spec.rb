@@ -6,6 +6,8 @@ describe IdeasController, type: :controller do
     @user = FactoryGirl.create(:user)
   end
 
+  include_examples "Validate before action", :require_login
+
   describe "GET #index" do
     context "as authorized user" do
       before(:each) do

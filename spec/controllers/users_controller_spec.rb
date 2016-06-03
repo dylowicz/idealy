@@ -5,6 +5,10 @@ describe UsersController, type: :controller do
     @user = FactoryGirl.create(:user)
   end
 
+  context "when skip before action" do
+    it { is_expected.not_to use_before_action(:require_login) }
+  end
+
   describe "GET #new" do
     context "as authorized user" do
       before(:each) do

@@ -2,6 +2,12 @@ require 'spec_helper'
 
 UNAUTHORIZED_ERROR = { error: "Access denied" }
 
+shared_examples "Validate before action" do |before_action|
+  context "when before action" do
+    it { is_expected.to use_before_action(before_action) }
+  end
+end
+
 shared_examples "Validate unauthorized response" do
   it { is_expected.to respond_with :unauthorized }
   it { is_expected.to respond_with_content_type :html }
@@ -11,6 +17,8 @@ shared_examples "Validate CRUD API" do |object|
   before(:all) do
     @user = FactoryGirl.create(:user)
   end
+
+  include_examples "Validate before action", :require_login
 
   describe "GET #index" do
     before(:all) do
