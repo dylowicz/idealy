@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   post   '/login'   => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
 
-  root 'ideas#index'
+  root 'home#index'
 end

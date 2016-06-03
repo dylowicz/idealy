@@ -35,11 +35,11 @@ class TasksBox extends React.Component {
             id: id,
             completed: !task.completed
         }
-        this._updateTask(this.props.url + '/' + id, {task: editedTask});
+        this._updateTask(`${this.props.url}/${id}`, {task: editedTask});
     }
 
     onTaskDeleteClick(id) {
-        this._deleteTask(this.props.url + '/' + id);
+        this._deleteTask(`${this.props.url}/${id}`);
     }
 
     _getTasks() {

@@ -1,11 +1,14 @@
 require 'faker'
 
 FactoryGirl.define do
-  factory :idea do |i|
-    i.title { Faker::Lorem.sentence }
-    i.description { Faker::Lorem.paragraph }
-    i.status { "new" }
-    i.score { 0 }
-    i.user { create(:user) }
+  factory :idea do
+    user
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph }
+    status { "new" }
+
+    trait :invalid do
+      title { nil }
+    end
   end
 end

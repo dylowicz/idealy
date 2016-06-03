@@ -1,5 +1,6 @@
-require 'rails_helper'
+require 'spec_helper'
+require_relative 'support/shared_examples'
 
-RSpec.describe NotesController, :type => :controller do
-
+describe NotesController, type: :controller do
+  include_examples "Validate CRUD API", :note
 end

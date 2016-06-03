@@ -4,10 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  before_filter :require_login
+  before_action :require_login
 
   private
     def require_login
-      redirect_to login_path unless logged_in?
+      unless logged_in?
+        respond_to do |format|
+          format.html { render file: "public/401", status: :unauthorized }
+          format.json { render json: { error: 'Access denied' }, status: :unauthorized }
+        end
+      end
     end
 end

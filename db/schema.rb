@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20160502193508) do
     t.string   "title",                   null: false
     t.text     "description"
     t.integer  "status",      default: 0, null: false
-    t.integer  "score",       default: 0, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "user_id"
@@ -25,19 +24,16 @@ ActiveRecord::Schema.define(version: 20160502193508) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content",                null: false
-    t.integer  "type",       default: 0, null: false
+    t.text     "content",    null: false
     t.integer  "idea_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["idea_id"], name: "index_notes_on_idea_id"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title",                      null: false
     t.boolean  "completed",  default: false, null: false
-    t.datetime "due_to"
     t.integer  "idea_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
