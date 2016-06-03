@@ -2,10 +2,7 @@ require 'spec_helper'
 require_relative 'support/shared_examples'
 
 describe SessionsController, type: :controller do
-  before(:all) do
-    @user = FactoryGirl.create(:user)
-  end
-
+  include_examples "Set before and after all for User"
   include_examples "Validate skip before action", :require_login
 
   describe "GET #new" do

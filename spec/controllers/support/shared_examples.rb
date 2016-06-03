@@ -2,6 +2,11 @@ require 'spec_helper'
 
 UNAUTHORIZED_ERROR = { error: "Access denied" }
 
+shared_examples "Set before and after all for User" do
+  before(:all) { @user = FactoryGirl.create(:user) }
+  after(:all) { User.destroy(@user.id) }
+end
+
 shared_examples "Validate before action" do |before_action|
   context "when before action" do
     it { is_expected.to use_before_action(before_action) }
@@ -20,10 +25,7 @@ shared_examples "Validate unauthorized response" do
 end
 
 shared_examples "Validate CRUD API" do |object|
-  before(:all) do
-    @user = FactoryGirl.create(:user)
-  end
-
+  include_examples "Set before and after all for User"
   include_examples "Validate before action", :require_login
 
   describe "GET #index" do
@@ -31,6 +33,7 @@ shared_examples "Validate CRUD API" do |object|
       @idea = FactoryGirl.create(:idea, user: @user)
       @objects = FactoryGirl.create_list(object, 3, idea_id: @idea.id)
     end
+    after(:all) { Idea.destroy(@idea.id) }
 
     context "as authorized user" do
       before(:each) do
@@ -58,6 +61,7 @@ shared_examples "Validate CRUD API" do |object|
       @idea = FactoryGirl.create(:idea, user: @user)
       @object_attributes = FactoryGirl.attributes_for(object, idea: @idea)
     end
+    after(:all) { Idea.destroy(@idea.id) }
 
     context "as authorized user" do
       before(:each) do
@@ -86,6 +90,7 @@ shared_examples "Validate CRUD API" do |object|
       @object = FactoryGirl.create(object, idea: @idea)
       @object_attributes = FactoryGirl.attributes_for(object, idea: @idea)
     end
+    after(:all) { Idea.destroy(@idea.id) }
 
     context "as authorized user" do
       before(:each) do
@@ -113,6 +118,7 @@ shared_examples "Validate CRUD API" do |object|
       @idea = FactoryGirl.create(:idea, user: @user)
       @object = FactoryGirl.create(object, idea: @idea)
     end
+    after(:all) { Idea.destroy(@idea.id) }
 
     context "as authorized user" do
       before(:each) do
