@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 UNAUTHORIZED_ERROR = { error: "Access denied" }
 
