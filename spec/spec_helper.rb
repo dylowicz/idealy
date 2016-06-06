@@ -19,18 +19,33 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
+require 'watir'
+require 'watir-webdriver'
+require 'page-object'
 require 'pry'
 
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    # Choose a test framework:
-    with.test_framework :rspec
-
-    # Or, choose the following (which implies all of the above):
-    with.library :rails
-  end
-end
+require_rel 'integration/support'
 
 RSpec.configure do |config|
+  config.include PageObject::PageFactory
 
+  config.before(:all) do
+    ENV['BROWSER'] ||= "chrome"
+    @browser_res_x = 1366
+    @browser_res_y = 768
+
+    case ENV['BROWSER']
+      when 'firefox'
+        @browser = Watir::Browser.new :firefox
+      when 'chrome'
+        @browser = Watir::Browser.new :chrome, :switches => %w[--test-type]
+      else
+        raise "Unsupported browser: " + ENV['BROWSER']
+    end
+    @browser.window.resize_to(@browser_res_x, @browser_res_y)
+  end
+
+  config.after(:all) do
+    @browser.close unless @browser.nil?
+  end
 end
