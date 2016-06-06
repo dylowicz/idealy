@@ -70,6 +70,7 @@ group :test do
   gem 'watir-webdriver', '~> 0.9.1'
   gem 'page-object', '~> 1.1', '>= 1.1.1'
   gem 'require_all', '~> 1.3', '>= 1.3.3'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

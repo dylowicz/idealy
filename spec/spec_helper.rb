@@ -27,12 +27,36 @@ require 'pry'
 require_rel 'integration/support'
 
 RSpec.configure do |config|
-  config.include PageObject::PageFactory
 
+
+  # Rails
+  config.use_transactional_fixtures = false
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
+  # Database Cleaner
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.after(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.clean
+  end
+
+  # Page Object
+  config.include PageObject::PageFactory
+
+  # WATiR
   config.before(:all) do
     ENV['BROWSER'] ||= "chrome"
     @browser_res_x = 1366
