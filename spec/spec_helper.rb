@@ -29,6 +29,10 @@ require_rel 'integration/support'
 RSpec.configure do |config|
   config.include PageObject::PageFactory
 
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+
   config.before(:all) do
     ENV['BROWSER'] ||= "chrome"
     @browser_res_x = 1366
@@ -43,6 +47,13 @@ RSpec.configure do |config|
         raise "Unsupported browser: " + ENV['BROWSER']
     end
     @browser.window.resize_to(@browser_res_x, @browser_res_y)
+
+    case ENV['RAILS_ENV']
+      when 'test'
+        ENV['DOMAIN'] = 'http://localhost:3000'
+    end
+
+    @browser.goto ENV['DOMAIN']
   end
 
   config.after(:all) do
