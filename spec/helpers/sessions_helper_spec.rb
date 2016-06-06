@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe SessionsHelper, type: :helper do
   describe "user authentication" do
