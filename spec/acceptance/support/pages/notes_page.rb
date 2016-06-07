@@ -1,0 +1,3 @@
+class NotesPage < BasePage
+
+end

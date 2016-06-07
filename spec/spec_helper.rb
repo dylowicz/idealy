@@ -24,11 +24,9 @@ require 'watir-webdriver'
 require 'page-object'
 require 'pry'
 
-require_rel 'integration/support'
+require_rel 'acceptance/support'
 
 RSpec.configure do |config|
-
-
   # Rails
   config.use_transactional_fixtures = false
   config.expect_with :rspec do |expectations|
@@ -74,10 +72,10 @@ RSpec.configure do |config|
 
     case ENV['RAILS_ENV']
       when 'test'
-        ENV['DOMAIN'] = 'http://localhost:3000'
+        DOMAIN ||= 'http://localhost:3000'
     end
 
-    @browser.goto ENV['DOMAIN']
+    @browser.goto DOMAIN
   end
 
   config.after(:all) do

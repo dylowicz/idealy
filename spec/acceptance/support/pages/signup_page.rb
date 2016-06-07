@@ -1,5 +1,5 @@
 class SignUpPage < BasePage
-  page_url "#{ENV['DOMAIN']}/signup"
+  page_url 'http://localhost:3000/signup'
 
   h1(:signup_header, text: "Sign up")
   text_field(:name_field, id: 'name-textfield')

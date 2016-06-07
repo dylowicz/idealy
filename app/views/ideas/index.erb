@@ -1,25 +1,25 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h1 class="text-center">Ideas</h1>
+    <h1 class="text-center" id="ideas-header">Ideas</h1>
     <div class="well">
       <% unless @ideas.empty? %>
         <div class="list-group" id="ideas-list">
           <% @ideas.each do |idea| %>
-            <%= link_to idea_path(idea), class: "list-group-item" do%>
-              <div class="list-group-item-text" style="display: inline;"><%= idea.title %></div>
-              <span class="label label-<%= idea.current_status_css %> pull-right"><%= idea.status.capitalize %></span>
+            <%= link_to idea_path(idea), class: "list-group-item idea-item" do%>
+              <div class="list-group-item-text idea-title" style="display: inline;"><%= idea.title %></div>
+              <span class="label label-<%= idea.current_status_css %> pull-right idea-status"><%= idea.status.capitalize %></span>
             <% end %>
             <br/>
           <% end %>
         </div>
       <% else %>
-        <p class="text-center text-muted">You have no ideas yet.</p>
+        <p class="text-center text-muted" id="no-ideas-info">You have no ideas yet.</p>
       <% end %>
       <div class="text-center">
-        <%= link_to new_idea_path, id: 'create-idea' do %>
-            <%= image_tag "idea.svg", id: 'create-idea-icon' %>
+        <%= link_to new_idea_path, id: 'new-idea' do %>
+            <%= image_tag "idea.svg", id: 'new-idea-icon' %>
             <br/>
-            Create!
+            Add new!
         <% end %>
       </div>
     </div>

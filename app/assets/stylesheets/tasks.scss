@@ -13,20 +13,24 @@
   margin-bottom: 0;
 }
 
-#task #delete-task {
+.task-item .delete-task {
   display: none;
 }
 
-#task:hover #delete-task {
+.task-item:hover .delete-task {
   display: block;
   margin-top: 2px;
   margin-right: 3px;
 }
 
-#delete-task {
+.delete-task {
   opacity: 0.5;
 }
 
-#delete-task:hover {
+.delete-task:hover {
   opacity: 1.0;
+}
+
+.task-label {
+  margin-right: 12px;
 }

@@ -1,5 +1,5 @@
 class LoginPage < BasePage
-  page_url "#{ENV['DOMAIN']}/login"
+  page_url 'http://localhost:3000/login'
 
   h1(:login_header, text: "Log in")
   text_field(:email_field, id: 'email-textfield')
@@ -11,7 +11,7 @@ class LoginPage < BasePage
     signup
   end
 
-  def login_user(email, password)
+  def login_with(email, password)
     self.email_field = email
     self.password_field = password
     login
