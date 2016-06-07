@@ -13,7 +13,7 @@ class IdeasPage < BasePage
   end
 
   def find_by_title(idea_title)
-    ideas.find{ |e| e.div_element(class: 'idea-title', text: idea_title) }
+    ideas.find { |e| e.div_element(class: 'idea-title', text: idea_title) }
   end
 
   def go_to_idea(idea_title)

@@ -1,0 +1,3 @@
+class TasksPage < BasePage
+  
+end

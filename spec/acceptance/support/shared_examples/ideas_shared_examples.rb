@@ -31,6 +31,10 @@ shared_examples "Create Idea" do
     it "displays Idea's status" do
       expect(on(IdeaPage).status_element.when_visible.text).to eq "New"
     end
+
+    it "finds no notes" do
+      expect(on(NotesPage).notes_info_element.when_visible.text).to eq "Nothing has been said, yet!"
+    end
   end
 end
 
@@ -71,15 +75,15 @@ shared_examples "Update Idea" do
       expect(on(IdeaPage).idea_box_element.visible?).to be_truthy
     end
 
-    it "displays Idea's title" do
+    it "displays updated Idea's title" do
       expect(on(IdeaPage).title_element.when_visible.text).to eq @updated_idea.title
     end
 
-    it "displays Idea's description" do
+    it "displays updated Idea's description" do
       expect(on(IdeaPage).description_element.when_visible.text).to eq @updated_idea.description
     end
 
-    it "displays Idea's status" do
+    it "displays updated Idea's status" do
       expect(on(IdeaPage).status_element.when_visible.text).to eq @updated_idea.status.capitalize
     end
   end
@@ -101,7 +105,7 @@ shared_examples "Delete Idea" do
       expect(on(IdeaEditPage).idea_form_header_element.when_visible.text).to eq "Edit Idea"
     end
 
-    it "deletes the Idea" do
+    it "deletes a Idea" do
       on(IdeaEditPage).delete_idea
       expect(on(IdeasPage).flash_message_element.when_visible.text).to eq "Idea deleted!"
     end

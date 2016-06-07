@@ -99,10 +99,10 @@ class NotesBox extends React.Component {
     render() {
         return (
             <div className="container-fluid" id="notes-box">
-                <h3 className="text-center">Thoughts</h3>
+                <h3 className="text-center" id="notes-header">Thoughts</h3>
                 <div className="well">
                     { this.state.notes.length === 0 ?
-                        <p className="text-muted text-center">Nothing has been said, yet!</p> :
+                        <p className="text-muted text-center" id="no-notes-info">Nothing has been said, yet!</p> :
                         <NoteList
                             notes={this.state.notes}
                             onNoteEditSaveClick={this.onNoteEditSaveClick}
