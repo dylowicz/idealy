@@ -1,7 +1,7 @@
 class NotesPage < BasePage
 
-  div(:tasks_box, id: 'tasks-box')
-  h1(:tasks_header, id: 'tasks-header')
+  div(:notes_box, id: 'notes-box')
+  h1(:notes_header, id: 'notes-header')
   paragraph(:notes_info, id: 'no-notes-info')
   div(:notes_list, id: 'notes-list')
   textarea(:add_note_content_textarea, id: 'add-note-content-textarea')

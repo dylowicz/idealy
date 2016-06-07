@@ -11,7 +11,7 @@ shared_examples "Create Idea" do
       expect(on(IdeaNewPage).idea_form_header_element.when_visible.text).to eq "Create a new Idea"
     end
 
-    it "fills new Idea form" do
+    it "creates a new Idea" do
       on(IdeaNewPage).submit_with(@idea.title, @idea.description)
       expect(on(IdeaPage).flash_message_element.when_visible.text).to eq "Idea created!"
     end
@@ -32,8 +32,12 @@ shared_examples "Create Idea" do
       expect(on(IdeaPage).status_element.when_visible.text).to eq "New"
     end
 
-    it "finds no notes" do
+    it "finds no Notes" do
       expect(on(NotesPage).notes_info_element.when_visible.text).to eq "Nothing has been said, yet!"
+    end
+
+    it "finds no Tasks" do
+      expect(on(TasksPage).tasks_info_element.when_visible.text).to eq "There's nothing to do!"
     end
   end
 end
@@ -66,7 +70,7 @@ shared_examples "Update Idea" do
       expect(on(IdeaEditPage).status_element.when_visible.value).to eq "new"
     end
 
-    it "edits Idea with new data" do
+    it "updates Idea with new data" do
       on(IdeaEditPage).submit_with(@updated_idea.title, @updated_idea.description, @updated_idea.status)
       expect(on(IdeaPage).flash_message_element.when_visible.text).to eq "Idea updated!"
     end
@@ -105,7 +109,7 @@ shared_examples "Delete Idea" do
       expect(on(IdeaEditPage).idea_form_header_element.when_visible.text).to eq "Edit Idea"
     end
 
-    it "deletes a Idea" do
+    it "deletes an Idea" do
       on(IdeaEditPage).delete_idea
       expect(on(IdeasPage).flash_message_element.when_visible.text).to eq "Idea deleted!"
     end
