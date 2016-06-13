@@ -18,7 +18,6 @@ shared_examples "Create Note" do
     end
 
     it "displays Note's date" do
-      # expect(on(NotesPage).created_at_date).to be_between(@created_at - 10.seconds, @created_at + 10.seconds)
       expect(on(NotesPage).created_at_date).to be_within(10.seconds).of(@created_at)
     end
   end
