@@ -1,10 +1,12 @@
+jest.unmock("../NotesBox.es6.jsx");
 
-jest.disableAutomock();
-// jest.unmock("./app/assets/javascripts/containers/NotesBox");
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
+import NotesBox from '../NotesBox.es6.jsx';
 
 describe('NotesBox', () => {
   it('says hello', () => {
-    // const NotesBox = require('./app/assets/javascripts/containers/NotesBox.es6.jsx');
     console.log("Hello my first test!");
   });
 });
