@@ -24,7 +24,7 @@
       "<rootDir>/node_modules/react-addons-test-utils/"
     ],
     "testPathDirs": [
-      "./app/assets/javascripts/__tests__"
+      "./app/assets/javascripts/components/__tests__"
     ]
   },
   "license": "MIT",

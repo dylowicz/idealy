@@ -4,13 +4,13 @@
 React = require('react');
 ReactDOM = require('react-dom');
 
-TasksBox = require('./containers/TasksBox');
-TaskForm = require('./components/tasks/TaskForm');
-TaskList = require('./components/tasks/TaskList');
-Task = require('./components/tasks/Task');
+TasksBox = require('./components/TasksBox');
+TaskForm = require('./components/TaskForm');
+TaskList = require('./components/TaskList');
+Task = require('./components/Task');
 
-NotesBox = require('./containers/NotesBox');
-NoteContainer = require('./containers/NoteContainer');
-NoteForm = require('./components/notes/NoteForm');
-NoteList = require('./components/notes/NoteList');
-Note = require('./components/notes/Note');
+NotesBox = require('./components/NotesBox');
+NoteContainer = require('./components/NoteContainer');
+NoteForm = require('./components/NoteForm');
+NoteList = require('./components/NoteList');
+Note = require('./components/Note');

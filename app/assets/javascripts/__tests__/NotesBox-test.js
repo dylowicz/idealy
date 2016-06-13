@@ -1,10 +1,8 @@
-
-jest.disableAutomock();
-// jest.unmock("./app/assets/javascripts/containers/NotesBox");
+jest.unmock("../NotesBox");
 
 describe('NotesBox', () => {
   it('says hello', () => {
-    // const NotesBox = require('./app/assets/javascripts/containers/NotesBox.es6.jsx');
+    const NotesBox = require('../NotesBox');
     console.log("Hello my first test!");
   });
 });
