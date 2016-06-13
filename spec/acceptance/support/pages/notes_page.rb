@@ -12,6 +12,12 @@ class NotesPage < BasePage
   link(:save_edited_note, class: 'save-edit-note')
   span(:delete, class: 'delete-note')
 
+  DATE_FORMAT = "%m/%d/%Y, %I:%M:%S %p"
+
+  def created_at_date
+    DateTime.strptime(note_created_at_element.text, DATE_FORMAT).change(offset: "+02:00")
+  end
+
   def notes
     notes_list_element.div_elements(class: 'note-item')
   end

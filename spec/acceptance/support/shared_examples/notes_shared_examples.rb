@@ -5,6 +5,7 @@ shared_examples "Create Note" do
     before(:all) do
       visit(IdeasPage)
       on(IdeasPage).go_to_idea @idea.title
+      @created_at = DateTime.now
     end
 
     it "creates a Note" do
@@ -16,8 +17,8 @@ shared_examples "Create Note" do
       expect(on(NotesPage).find_by_content(@note.content)).not_to be_nil
     end
 
-    xit "displays Note's date" do
-    
+    it "displays Note's date" do
+      expect(on(NotesPage).created_at_date).to be_between(@created_at, @created_at + 1.minute)
     end
   end
 end
@@ -36,10 +37,6 @@ shared_examples "Update Note" do
 
     it "displays updated Note's content" do
       expect(on(NotesPage).find_by_content(@updated_note.content)).not_to be_nil
-    end
-
-    xit "displays updated Note's date" do
-
     end
   end
 end
