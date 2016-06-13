@@ -68,6 +68,11 @@ group :test do
   gem 'json_spec', '~> 1.1', '>= 1.1.4'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'shoulda-kept-respond-with-content-type'
+  gem "watir", "~>4.0"
+  gem 'watir-webdriver', '~> 0.9.1'
+  gem 'page-object', '~> 1.1', '>= 1.1.1'
+  gem 'require_all', '~> 1.3', '>= 1.3.3'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

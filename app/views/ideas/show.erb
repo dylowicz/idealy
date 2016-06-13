@@ -1,16 +1,18 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <div class="container-fluid" id="idea-box">
-      <div class="well">
+    <div class="container-fluid">
+      <div class="well" id="idea-box">
         <blockquote class="text-center">
-          <p class="lead"><%= @idea.title %></p>
+          <p class="lead" id="idea-title"><%= @idea.title %></p>
           <% unless @idea.description.empty? %>
-            <footer><%= @idea.description %></footer>
+            <footer id="idea-description">
+              <p id="idea-description"><%= @idea.description %></p>
+            </footer>
           <% end %>
-          <span class="pull-right label label-<%= @idea.current_status_css %>"><%= @idea.status.capitalize %></span>
+          <span class="pull-right label label-<%= @idea.current_status_css %>" id="idea-status"><%= @idea.status.capitalize %></span>
         </blockquote>
         <footer class="pull-right" id="idea-action-footer">
-          <%= link_to '', edit_idea_path(@idea), class: "glyphicon glyphicon-pencil", id: "edit-idea" %>
+          <%= link_to '', edit_idea_path(@idea), class: 'glyphicon glyphicon-pencil', id: 'idea-edit' %>
         </footer>
       </div>
     </div>

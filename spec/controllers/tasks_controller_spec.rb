@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require_relative 'support/shared_examples'
 
 describe TasksController, type: :controller do

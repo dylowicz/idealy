@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Idea, type: :model do
   it "has a valid factory" do

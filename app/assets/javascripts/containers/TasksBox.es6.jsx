@@ -107,11 +107,11 @@ class TasksBox extends React.Component {
             <div className="container-fluid" id="tasks-box">
                 <h3 className="text-center">
                     Tasks{' '}
-                    { numberOfNotCompletedTasks > 0 ? <span className="badge" id="task-count">{numberOfNotCompletedTasks}</span> : null }
+                    { numberOfNotCompletedTasks > 0 ? <span className="badge" id="todo-tasks-counter">{numberOfNotCompletedTasks}</span> : null }
                 </h3>
                 <div className="well">
                     { this.state.tasks.length === 0 ?
-                        <p className="text-muted text-center">There's nothing to do!</p> :
+                        <p className="text-muted text-center" id="no-tasks-info">There's nothing to do!</p> :
                         <TaskList tasks={this.state.tasks} onTaskClick={this.onTaskClick} onTaskDeleteClick={this.onTaskDeleteClick}/>
                     }
                     <TaskForm onTaskSubmit={this.onTaskSubmit}/>

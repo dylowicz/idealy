@@ -10,7 +10,7 @@ const TaskForm = ({onTaskSubmit}) => {
                 <input
                     type="text"
                     className="form-control"
-                    id="add-task-title"
+                    id="add-task-title-textfield"
                     placeholder="Add a new task"
                     ref={node => input = node}
                 />

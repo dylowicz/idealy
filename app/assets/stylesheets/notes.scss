@@ -6,28 +6,28 @@
   padding: 6px 15px;
 }
 
-#note-footer {
+.note-footer {
   padding: 2px 15px;
 }
 
-#note #delete-note {
+.note-item .delete-note {
   display: none;
 }
 
-#note:hover #delete-note {
+.note-item:hover .delete-note {
   display: block;
   margin-top: 2px;
   margin-right: 3px;
 }
 
-#delete-note {
+.delete-note {
   opacity: 0.5;
 }
 
-#delete-note:hover {
+.delete-note:hover {
   opacity: 1.0;
 }
 
-#cancel-edit-note {
+.cancel-edit-note {
 
 }
