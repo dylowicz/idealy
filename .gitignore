@@ -22,7 +22,6 @@
 =======
 *.rbc
 capybara-*.html
-.rspec
 /log
 /tmp
 /db/*.sqlite3
@@ -58,3 +57,6 @@ bower.json
 
 # Idea
 /.idea
+
+# Node
+/node_modules

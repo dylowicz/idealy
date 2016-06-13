@@ -6,7 +6,7 @@ const NoteForm = ({onNoteSubmit}) => {
             <div className="form-group">
                 <textarea
                     className="form-control"
-                    id="add-note-content"
+                    id="add-note-content-textarea"
                     placeholder="Enter your thought"
                     ref={node => input = node}
                 />
@@ -16,6 +16,7 @@ const NoteForm = ({onNoteSubmit}) => {
                 name="commit"
                 value="Add Thought"
                 className="btn btn-primary"
+                id="add-note"
             />
         </form>
     );
