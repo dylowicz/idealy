@@ -6,7 +6,14 @@ import TestUtils from 'react-addons-test-utils';
 import NotesBox from '../notes/NotesBox.es6.jsx';
 
 describe('NotesBox', () => {
-  it('says hello', () => {
-    console.log("Hello my first test!");
+  beforeEach(() => {
+
   });
+
+
+  // it('says hello', () => {
+  //   const notesBox = TestUtils.renderIntoDocument(
+  //     <NotesBox/>
+  //   );
+  // });
 });

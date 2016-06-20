@@ -20,7 +20,7 @@ class NotesBox extends React.Component {
 
     onNoteNewSubmit(event, content) {
         event.preventDefault();
-        $('#add-note-content').val('');
+        $('#add-note-content-textarea').val('');
         if (content.trim() === "") return;
         const newNote = {
             content: content.trim()
@@ -36,7 +36,6 @@ class NotesBox extends React.Component {
         };
         this._updateNote(`${this.props.url}/${id}`, {note: editedNote});
     }
-
 
     onNoteDeleteClick(id) {
         this._deleteNote(`${this.props.url}/${id}`);
