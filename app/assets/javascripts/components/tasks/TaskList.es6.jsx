@@ -1,3 +1,5 @@
+const React = require('react');
+
 const TaskList = ({tasks, onTaskClick, onTaskDeleteClick}) => (
     <ul className="list-unstyled checked-list-box" id="tasks-list">
         {

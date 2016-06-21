@@ -1,3 +1,5 @@
+const React = require('react');
+
 const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onNoteCancelClick, onNoteDeleteClick, inEditMode, inputHeight}) => {
     let input;
 

@@ -1,3 +1,5 @@
+const React = require('react');
+
 const TaskForm = ({onTaskSubmit}) => {
     let input;
 

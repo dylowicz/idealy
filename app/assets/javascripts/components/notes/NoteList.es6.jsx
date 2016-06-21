@@ -1,3 +1,5 @@
+const React = require('react');
+
 const NoteList = ({notes, onNoteEditSaveClick, onNoteDeleteClick}) => (
     <div className="list-unstyled" id="notes-list">
         {

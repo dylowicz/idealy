@@ -1,3 +1,5 @@
+const React = require('react');
+
 const NoteForm = ({onNoteSubmit}) => {
     let input;
 

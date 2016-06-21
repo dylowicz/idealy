@@ -1,3 +1,5 @@
+const React = require('react');
+
 const Task = ({title, completed, onTaskClick, onTaskDeleteClick}) => (
     <li className="list-group-item-unstyled task-item">
         <div className="checkbox">
