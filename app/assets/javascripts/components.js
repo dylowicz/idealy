@@ -1,7 +1,10 @@
 //= require_self
 //= require react_ujs
+//= require jquery_ujs
 
-React = require('react');
+const $ = jQuery = require('jquery');
+
+React = window.React = global.React = require('react');
 ReactDOM = require('react-dom');
 
 TasksBox = require('./components/tasks/TasksBox');
