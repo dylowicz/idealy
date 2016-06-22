@@ -1,9 +1,12 @@
 const React = require('react');
+const TaskList = require('./TaskList.es6.jsx');
+const TaskForm = require('./TaskForm.es6.jsx');
+const $ = require('jquery');
 
 class TasksBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { tasks: [] };
+        this.state = { tasks: this.props.tasks };
 
         this.onTaskSubmit = this.onTaskSubmit.bind(this);
         this.onTaskClick = this.onTaskClick.bind(this);

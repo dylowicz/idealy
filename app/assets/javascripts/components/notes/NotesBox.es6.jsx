@@ -3,7 +3,7 @@ const React = require('react');
 class NotesBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { notes: [] };
+        this.state = { notes: this.props.notes };
 
         this.onNoteNewSubmit = this.onNoteNewSubmit.bind(this);
         this.onNoteEditSaveClick = this.onNoteEditSaveClick.bind(this);
