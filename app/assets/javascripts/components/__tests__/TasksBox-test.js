@@ -94,7 +94,6 @@ describe('TasksBox', () => {
 
       it('renders list of Tasks', () => {
         expect(taskList).toBeDefined();
-        console.log(taskList);
         expect(taskList.type).toEqual(TaskList);
         expect(taskList.props.tasks.length).toEqual(tasks.length);
         expect(taskList.props.tasks).toEqual(tasks);

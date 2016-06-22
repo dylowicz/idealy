@@ -1,4 +1,5 @@
 const React = require('react');
+const $ = require('jquery');
 
 class NotesBox extends React.Component {
     constructor(props) {
@@ -49,14 +50,12 @@ class NotesBox extends React.Component {
             cache: false,
             success: (notes) => {
                 this.setState({notes: notes});
-                console.log(notes);
             },
             error: (xhr, status, err) =>  {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
         });
-
     }
 
     _createNote(url, data) {
