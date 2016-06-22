@@ -26,34 +26,34 @@ describe('Task', () => {
   it('renders Task component correctly', () => {
     const { output, props } = setup(taskProps(false));
 
-    expect(output.type).toBe('li');
-    expect(output.props.className).toBe('list-group-item-unstyled task-item');
+    expect(output.type).toEqual('li');
+    expect(output.props.className).toEqual('list-group-item-unstyled task-item');
 
     let div = output.props.children;
-    expect(div.type).toBe('div');
-    expect(div.props.className).toBe('checkbox');
+    expect(div.type).toEqual('div');
+    expect(div.props.className).toEqual('checkbox');
 
     let [ label, span ] = div.props.children;
-    expect(label.type).toBe('label');
-    expect(label.props.className).toBe('task-label');
-    expect(label.props.style.textDecoration).toBe('none');
+    expect(label.type).toEqual('label');
+    expect(label.props.className).toEqual('task-label');
+    expect(label.props.style.textDecoration).toEqual('none');
 
-    expect(span.type).toBe('span');
-    expect(span.props.className).toBe('glyphicon glyphicon-trash pull-right delete-task');
-    expect(span.props.children).toBe(undefined);
+    expect(span.type).toEqual('span');
+    expect(span.props.className).toEqual('glyphicon glyphicon-trash pull-right delete-task');
+    expect(span.props.children).toEqual(undefined);
 
     let [ input, emptySpace, title ] = label.props.children;
-    expect(input.type).toBe('input');
-    expect(input.props.type).toBe('checkbox');
-    expect(input.props.checked).toBe(false);
-    expect(emptySpace).toBe(' ');
-    expect(title).toBe(props.title);
+    expect(input.type).toEqual('input');
+    expect(input.props.type).toEqual('checkbox');
+    expect(input.props.checked).toEqual(false);
+    expect(emptySpace).toEqual(' ');
+    expect(title).toEqual(props.title);
   });
 
   it('strikes through the Task if it is completed', () => {
     const { output } = setup(taskProps(true));
 
     let label = output.props.children.props.children[0];
-    expect(label.props.style.textDecoration).toBe('line-through');
+    expect(label.props.style.textDecoration).toEqual('line-through');
   });
 });

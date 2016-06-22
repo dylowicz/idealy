@@ -40,9 +40,9 @@ describe('TaskList', () => {
   });
 
   it('renders TaskList component correctly', () => {
-    expect(output.type).toBe('ul');
-    expect(output.props.className).toBe('list-unstyled checked-list-box');
-    expect(output.props.id).toBe('tasks-list');
+    expect(output.type).toEqual('ul');
+    expect(output.props.className).toEqual('list-unstyled checked-list-box');
+    expect(output.props.id).toEqual('tasks-list');
   });
 
   it('renders Tasks in TaskList component correctly', () => {
