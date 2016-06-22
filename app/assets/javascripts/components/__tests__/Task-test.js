@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Task from '../tasks/Task.es6.jsx';
 
-function taskProps(completed) {
+function taskProps(completed=false) {
   return {
     title: "There's some title!",
     completed: completed,
@@ -24,7 +24,7 @@ function setup(props) {
 
 describe('Task', () => {
   it('renders Task component correctly', () => {
-    const { output, props } = setup(taskProps(false));
+    const { output, props } = setup(taskProps());
 
     expect(output.type).toEqual('li');
     expect(output.props.className).toEqual('list-group-item-unstyled task-item');

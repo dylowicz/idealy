@@ -56,7 +56,7 @@ class TasksBox extends React.Component {
             success: (tasks) => {
                 this.setState({tasks: tasks});
             },
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
             }
@@ -70,7 +70,7 @@ class TasksBox extends React.Component {
             dataType: 'json',
             data: data,
             success: () => this._getTasks(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
             }
@@ -84,7 +84,7 @@ class TasksBox extends React.Component {
             dataType: 'json',
             data: data,
             success: () => this._getTasks(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
             }
@@ -96,7 +96,7 @@ class TasksBox extends React.Component {
             url: url,
             method: 'DELETE',
             success: () => this._getTasks(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
             }

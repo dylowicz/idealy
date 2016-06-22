@@ -51,7 +51,7 @@ class NotesBox extends React.Component {
             success: (notes) => {
                 this.setState({notes: notes});
             },
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
@@ -65,7 +65,7 @@ class NotesBox extends React.Component {
             dataType: 'json',
             data: data,
             success: () => this._getNotes(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
@@ -79,7 +79,7 @@ class NotesBox extends React.Component {
             dataType: 'json',
             data: data,
             success: () => this._getNotes(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
@@ -91,7 +91,7 @@ class NotesBox extends React.Component {
             url: url,
             method: 'DELETE',
             success: () => this._getNotes(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
