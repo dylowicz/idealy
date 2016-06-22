@@ -5,26 +5,27 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Task from '../tasks/Task.es6.jsx';
 
-const { createRenderer, renderIntoDocument, scryRenderedDOMComponentsWithTag } = TestUtils;
-const { findDOMNode } = ReactDOM;
+function taskProps(completed) {
+  return {
+    title: "There's some title!",
+    completed: completed,
+    onTaskClick: jasmine.createSpy(),
+    onTaskDeleteClick: jasmine.createSpy()
+  };
+}
+
+function setup(props) {
+  const renderer = TestUtils.createRenderer();
+  renderer.render(<Task {...props} />);
+  const output = renderer.getRenderOutput();
+
+  return { output, props };
+}
 
 describe('Task', () => {
-  let props, output, renderer;
+  it('renders Task component correctly', () => {
+    const { output, props } = setup(taskProps(false));
 
-  beforeEach(() => {
-    props = {
-      title: "There's some title!",
-      completed: false,
-      onTaskClick: jasmine.createSpy(),
-      onTaskDeleteClick: jasmine.createSpy()
-    };
-
-    renderer = TestUtils.createRenderer();
-    renderer.render(<Task {...props} />);
-    output = renderer.getRenderOutput();
-  });
-
-  it('renders correctly', () => {
     expect(output.type).toBe('li');
     expect(output.props.className).toBe('list-group-item-unstyled task-item');
 
@@ -49,24 +50,10 @@ describe('Task', () => {
     expect(title).toBe(props.title);
   });
 
-  it('marks task as completed on task click', () => {
-    // const renderer = createRenderer();
-    // const task = renderer.render(<Task title="Title" completed={true} />);
-    // console.log(task.props.className);
-    // expect(task.props.className).toEqual('list-group-item-unstyled task-item');
-    //
-    // const taskComponent = renderIntoDocument(
-    //   <div><Task title="Title" completed={true} /></div>
-    // );
-    // const taskNode = findDOMNode(taskComponent).children[0];
-    //
-    // console.log(taskNode);
-    // expect(taskNode.className).toEqual('list-group-item-unstyled task-item');
+  it('strikes through the Task if it is completed', () => {
+    const { output } = setup(taskProps(true));
 
-
-  });
-
-  it('it strikes through the task if it is completed', () => {
-
+    let label = output.props.children.props.children[0];
+    expect(label.props.style.textDecoration).toBe('line-through');
   });
 });
