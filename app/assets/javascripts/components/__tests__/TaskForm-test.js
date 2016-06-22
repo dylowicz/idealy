@@ -40,6 +40,6 @@ describe('TaskForm', () => {
     let span = divInputGroupAddon.props.children;
     expect(span.type).toEqual('span');
     expect(span.props.className).toEqual('glyphicon glyphicon-plus');
-    expect(span.props.children).toEqual(undefined);
+    expect(span.props.children).toBeUndefined();
   });
 });

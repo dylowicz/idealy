@@ -30,8 +30,8 @@ describe('TaskList', () => {
 
     props = {
       tasks: tasks,
-      onTaskClick: Function,
-      onTaskDeleteClick: Function
+      onTaskClick: null,
+      onTaskDeleteClick: null
     };
 
     const renderer = TestUtils.createRenderer();
@@ -46,10 +46,18 @@ describe('TaskList', () => {
   });
 
   it('renders Tasks in TaskList component correctly', () => {
-    for (let i = 0; i < output.props.children.length; i++) {
-      expect(JSON.stringify(output.props.children[i])).toEqual(
-        JSON.stringify(<Task key={props.tasks[i].id} {...props.tasks[i]} onTaskClick={Function} onTaskDeleteClick={Function} />)
-      );
+    const assertComponentToTask = (component, task) => {
+      expect(component).toBeDefined();
+      expect(component.type).toEqual(Task);
+      expect(component.key).toEqual(task.id.toString());
+      expect(component.props.title).toEqual(task.title);
+      expect(component.props.completed).toBe(task.completed);
+      expect(component.props.onTaskClick).toBeDefined();
+      expect(component.props.onTaskDeleteClick).toBeDefined();
     }
+
+    output.props.children.forEach((component, index) => {
+      assertComponentToTask(component, props.tasks[index]);
+    });
   });
 });

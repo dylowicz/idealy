@@ -7,7 +7,8 @@ const TaskList = ({tasks, onTaskClick, onTaskDeleteClick}) => (
             tasks.map(task =>
                 <Task
                     key={task.id}
-                    {...task}
+                    title={task.title}
+                    completed={task.completed}
                     onTaskClick={(event) => onTaskClick(event, task.id)}
                     onTaskDeleteClick={() => onTaskDeleteClick(task.id)}
                 />

@@ -40,20 +40,31 @@ describe('Task', () => {
 
     expect(span.type).toEqual('span');
     expect(span.props.className).toEqual('glyphicon glyphicon-trash pull-right delete-task');
-    expect(span.props.children).toEqual(undefined);
+    expect(span.props.children).toBeUndefined();
 
     let [ input, emptySpace, title ] = label.props.children;
     expect(input.type).toEqual('input');
     expect(input.props.type).toEqual('checkbox');
-    expect(input.props.checked).toEqual(false);
+    expect(input.props.checked).toBe(false);
     expect(emptySpace).toEqual(' ');
     expect(title).toEqual(props.title);
   });
 
-  it('strikes through the Task if it is completed', () => {
-    const { output } = setup(taskProps(true));
+  describe('when completed', () => {
+    let label, input;
 
-    let label = output.props.children.props.children[0];
-    expect(label.props.style.textDecoration).toEqual('line-through');
+    beforeEach(() => {
+      const { output } = setup(taskProps(true));
+      label = output.props.children.props.children[0];
+      input = label.props.children[0];
+    });
+
+    it('marks Task as completed', () => {
+      expect(input.props.checked).toBe(true);
+    });
+
+    it('strikes through the Task', () => {
+      expect(label.props.style.textDecoration).toEqual('line-through');
+    });
   });
 });
