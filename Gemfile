@@ -14,12 +14,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use Uglifier as compressor for JavaScript images
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .coffee images and views
-# gem 'coffee-rails', '~> 4.1.1'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -37,13 +31,10 @@ gem 'browserify-rails', '~> 3.1.0'
 # Use Active Model Serializers
 gem 'active_model_serializers', '~> 0.10.0'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # group :production do
-#   gem 'pg',             '0.17.1'
-#   gem 'rails_12factor', '0.0.2'
-#   gem 'puma',           '3.1.0'
+#   gem 'pg',             '0.18.4'
+#   gem 'rails_12factor'
+#   gem 'puma'
 # end
 
 group :development, :test do
@@ -68,7 +59,7 @@ group :test do
   gem 'json_spec', '~> 1.1', '>= 1.1.4'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'shoulda-kept-respond-with-content-type'
-  gem "watir", "~>4.0"
+  gem 'watir', '~>4.0'
   gem 'watir-webdriver', '~> 0.9.1'
   gem 'page-object', '~> 1.1', '>= 1.1.1'
   gem 'require_all', '~> 1.3', '>= 1.3.3'
