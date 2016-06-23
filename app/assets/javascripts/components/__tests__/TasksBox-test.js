@@ -1,6 +1,4 @@
 jest.unmock("../tasks/TasksBox.es6.jsx");
-jest.unmock("../tasks/TaskList.es6.jsx");
-jest.unmock("../tasks/TaskForm.es6.jsx")
 
 import React from 'react';
 import ReactDOM from 'react-dom';
