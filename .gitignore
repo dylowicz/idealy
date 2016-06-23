@@ -60,3 +60,6 @@ bower.json
 
 # Node
 /node_modules
+
+# RSpec reports
+/rspec_html_reports

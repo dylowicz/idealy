@@ -30,6 +30,8 @@ gem 'browserify-rails', '~> 3.1.0'
 # Use Active Model Serializers
 gem 'active_model_serializers', '~> 0.10.0'
 
+gem 'brakeman', :require => false
+
 group :production do
   gem 'rails_12factor'
   gem 'pg', '0.18.4'
@@ -64,7 +66,5 @@ group :test do
   gem 'page-object', '~> 1.1', '>= 1.1.1'
   gem 'require_all', '~> 1.3', '>= 1.3.3'
   gem 'database_cleaner'
+  gem 'rspec_html_formatter', '~> 0.3.1'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
