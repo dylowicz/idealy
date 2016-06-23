@@ -30,8 +30,8 @@ describe('TaskList', () => {
 
     props = {
       tasks: tasks,
-      onTaskClick: null,
-      onTaskDeleteClick: null
+      onTaskClick: Function,
+      onTaskDeleteClick: Function
     };
 
     const renderer = TestUtils.createRenderer();

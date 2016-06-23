@@ -1,4 +1,5 @@
 const React = require('react');
+const NoteContainer = require('./NoteContainer.es6.jsx');
 
 const NoteList = ({notes, onNoteEditSaveClick, onNoteDeleteClick}) => (
     <div className="list-unstyled" id="notes-list">
