@@ -16,14 +16,10 @@
         <p class="text-center text-muted" id="no-ideas-info">You have no ideas yet.</p>
       <% end %>
       <div class="text-center">
-        <%= link_to new_idea_path, id: 'new-idea' do %>
-            <%= image_tag "idea.svg", id: 'new-idea-icon' %>
-            <br/>
-            Add new!
+        <%= link_to new_idea_path, id: 'new-idea', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', title: 'Add a new Idea!' do %>
+          <%= image_tag "idea.svg", id: 'new-idea-icon' %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-

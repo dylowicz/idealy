@@ -14,3 +14,5 @@
 //= require turbolinks
 //= require components
 //= require bootstrap-sprockets
+//= rqeuire bootstrap
+//= require site
