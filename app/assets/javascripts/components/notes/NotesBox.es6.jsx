@@ -1,5 +1,7 @@
 const React = require('react');
 const $ = require('jquery');
+const NoteList = require('./NoteList.es6.jsx');
+const NoteForm = require('./NoteForm.es6.jsx');
 
 class NotesBox extends React.Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 const React = require('react');
+const $ = require('jquery');
 const TaskList = require('./TaskList.es6.jsx');
 const TaskForm = require('./TaskForm.es6.jsx');
-const $ = require('jquery');
 
 class TasksBox extends React.Component {
     constructor(props) {
