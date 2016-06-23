@@ -1,3 +1,5 @@
+const React = require('react');
+
 const TaskForm = ({onTaskSubmit}) => {
     let input;
 
@@ -18,3 +20,5 @@ const TaskForm = ({onTaskSubmit}) => {
         </form>
     );
 };
+
+module.exports = TaskForm;

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
-  private
+  protected
     def require_login
       unless logged_in?
         respond_to do |format|

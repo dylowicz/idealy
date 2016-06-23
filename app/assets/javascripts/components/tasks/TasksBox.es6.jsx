@@ -1,7 +1,12 @@
+const React = require('react');
+const $ = require('jquery');
+const TaskList = require('./TaskList.es6.jsx');
+const TaskForm = require('./TaskForm.es6.jsx');
+
 class TasksBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { tasks: [] };
+        this.state = { tasks: this.props.tasks };
 
         this.onTaskSubmit = this.onTaskSubmit.bind(this);
         this.onTaskClick = this.onTaskClick.bind(this);
@@ -18,7 +23,7 @@ class TasksBox extends React.Component {
 
     onTaskSubmit(event, title) {
         event.preventDefault();
-        $('#add-task-title').val('');
+        $('#add-task-title-textfield').val('');
         if (title.trim() === "") return;
         const newTask = {
             title: title.trim(),
@@ -51,7 +56,7 @@ class TasksBox extends React.Component {
             success: (tasks) => {
                 this.setState({tasks: tasks});
             },
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
             }
@@ -65,7 +70,7 @@ class TasksBox extends React.Component {
             dataType: 'json',
             data: data,
             success: () => this._getTasks(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
             }
@@ -79,7 +84,7 @@ class TasksBox extends React.Component {
             dataType: 'json',
             data: data,
             success: () => this._getTasks(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
             }
@@ -91,7 +96,7 @@ class TasksBox extends React.Component {
             url: url,
             method: 'DELETE',
             success: () => this._getTasks(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({tasks: this.state.tasks});
                 console.error(url, status, err.toString());
             }
@@ -118,3 +123,5 @@ class TasksBox extends React.Component {
         );
     }
 }
+
+module.exports = TasksBox;

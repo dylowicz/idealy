@@ -1,3 +1,5 @@
+const React = require('react');
+
 const NoteForm = ({onNoteSubmit}) => {
     let input;
 
@@ -21,3 +23,5 @@ const NoteForm = ({onNoteSubmit}) => {
         </form>
     );
 };
+
+module.exports = NoteForm;

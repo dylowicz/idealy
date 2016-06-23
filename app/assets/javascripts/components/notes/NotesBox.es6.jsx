@@ -1,7 +1,12 @@
+const React = require('react');
+const $ = require('jquery');
+const NoteList = require('./NoteList.es6.jsx');
+const NoteForm = require('./NoteForm.es6.jsx');
+
 class NotesBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { notes: [] };
+        this.state = { notes: this.props.notes };
 
         this.onNoteNewSubmit = this.onNoteNewSubmit.bind(this);
         this.onNoteEditSaveClick = this.onNoteEditSaveClick.bind(this);
@@ -18,7 +23,7 @@ class NotesBox extends React.Component {
 
     onNoteNewSubmit(event, content) {
         event.preventDefault();
-        $('#add-note-content').val('');
+        $('#add-note-content-textarea').val('');
         if (content.trim() === "") return;
         const newNote = {
             content: content.trim()
@@ -35,7 +40,6 @@ class NotesBox extends React.Component {
         this._updateNote(`${this.props.url}/${id}`, {note: editedNote});
     }
 
-
     onNoteDeleteClick(id) {
         this._deleteNote(`${this.props.url}/${id}`);
     }
@@ -49,7 +53,7 @@ class NotesBox extends React.Component {
             success: (notes) => {
                 this.setState({notes: notes});
             },
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
@@ -63,7 +67,7 @@ class NotesBox extends React.Component {
             dataType: 'json',
             data: data,
             success: () => this._getNotes(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
@@ -77,7 +81,7 @@ class NotesBox extends React.Component {
             dataType: 'json',
             data: data,
             success: () => this._getNotes(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
@@ -89,7 +93,7 @@ class NotesBox extends React.Component {
             url: url,
             method: 'DELETE',
             success: () => this._getNotes(),
-            error: (xhr, status, err) =>  {
+            error: (xhr, status, err) => {
                 this.setState({notes: this.state.notes});
                 console.error(url, status, err.toString());
             }
@@ -115,3 +119,5 @@ class NotesBox extends React.Component {
         );
     }
 }
+
+module.exports = NotesBox;

@@ -1,3 +1,6 @@
+const React = require('react');
+const Note = require('./Note.es6.jsx');
+
 class NoteContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -42,3 +45,5 @@ class NoteContainer extends React.Component {
         );
     }
 }
+
+module.exports = NoteContainer;
