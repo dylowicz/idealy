@@ -1,6 +1,6 @@
 {
   "name": "idealy",
-  "devDependencies": {
+  "ependencies": {
     "babel-jest": "^12.1.0",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
@@ -11,7 +11,9 @@
     "jquery": "^2.x",
     "react": "^15.1.0",
     "react-addons-test-utils": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "browserify": "^13.0.1",
+    "reactify": "^1.1.1"
   },
   "scripts": {
     "test": "node ./node_modules/jest-cli/bin/jest.js --verbose"
@@ -29,9 +31,5 @@
   "license": "MIT",
   "engines": {
     "node": ">= 0.10"
-  },
-  "dependencies": {
-    "browserify": "^13.0.1",
-    "reactify": "^1.1.1"
   }
 }
