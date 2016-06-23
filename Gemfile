@@ -31,11 +31,10 @@ gem 'browserify-rails', '~> 3.1.0'
 # Use Active Model Serializers
 gem 'active_model_serializers', '~> 0.10.0'
 
-# group :production do
-#   gem 'pg',             '0.18.4'
-#   gem 'rails_12factor'
-#   gem 'puma'
-# end
+group :production do
+  gem 'pg',             '0.18.4'
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
