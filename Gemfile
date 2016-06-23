@@ -32,8 +32,8 @@ gem 'browserify-rails', '~> 3.1.0'
 gem 'active_model_serializers', '~> 0.10.0'
 
 group :production do
-  gem 'pg',             '0.18.4'
   gem 'rails_12factor'
+  gem 'pg', '0.18.4'
 end
 
 group :development, :test do
