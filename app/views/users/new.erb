@@ -19,6 +19,8 @@
           <br/>
           <%= f.submit "Create account", class: 'btn btn-primary', id: 'create-account-button' %>
       <% end %>
+
+      <span>Got an account already? <%= link_to "Log in!", login_path, id: 'log-in-link' %></span>
     </div>
   </div>
 </div>
