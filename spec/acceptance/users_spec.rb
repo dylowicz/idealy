@@ -42,12 +42,12 @@ describe "Users" do
       expect(on(Dashboard).login_element.when_visible.text).to eq "Sign in"
     end
 
-    it "displays information about successful logout" do
-      expect(on(HomePage).flash_message_element.when_visible.text).to eq "Successfully logged out."
-    end
-
     it "redirects to Login page" do
       expect(on(LoginPage).login_header_element.when_visible.text).to eq "Log in"
+    end
+
+    it "displays information about successful logout" do
+      expect(on(HomePage).flash_message_element.when_visible.text).to eq "Successfully logged out."
     end
   end
 
