@@ -18,20 +18,52 @@ describe "Users" do
       expect(on(SignUpPage).signup_header_element.when_visible.text).to eq "Sign up"
     end
 
-    it "creates a user" do
-      on(SignUpPage).signup(@name, @email, @password)
+    context "with invalid data" do
+      it "tries to send form with emtpy fields" do
+        on(SignUpPage).signup(nil, nil, nil)
+      end
+
+      it "displays error about blank password" do
+        expect(on(SignUpPage).find_error("Password can't be blank")).to be_truthy
+      end
+
+      it "displays error about too short password" do
+        expect(on(SignUpPage).find_error("Password is too short (minimum is 6 characters)")).to be_truthy
+      end
+
+      it "displays error about blank name" do
+        expect(on(SignUpPage).find_error("Name can't be blank")).to be_truthy
+      end
+
+      it "displays error about too short name" do
+        expect(on(SignUpPage).find_error("Name is too short (minimum is 3 characters)")).to be_truthy
+      end
+
+      it "displays error about blank email" do
+        expect(on(SignUpPage).find_error("Email can't be blank")).to be_truthy
+      end
+
+      it "displays error about invalid email format" do
+        expect(on(SignUpPage).find_error("Email is invalid")).to be_truthy
+      end
     end
 
-    it "automatically logs in a user" do
-      expect(on(Dashboard).user_name_element.when_visible.text).to eq @name
-    end
+    context "with valid data" do
+      it "creates a user" do
+        on(SignUpPage).signup(@name, @email, @password)
+      end
 
-    it "redirects to Ideas page" do
-      expect(on(IdeasPage).ideas_header_element.visible?).to be_truthy
-    end
+      it "automatically logs in a user" do
+        expect(on(Dashboard).user_name_element.when_visible.text).to eq @name
+      end
 
-    it "displays information about successful user creation" do
-      expect(on(IdeasPage).flash_message_element.when_visible.text).to eq "User #{@name} successfully created!"
+      it "redirects to Ideas page" do
+        expect(on(IdeasPage).ideas_header_element.visible?).to be_truthy
+      end
+
+      it "displays information about successful user creation" do
+        expect(on(IdeasPage).flash_message_element.when_visible.text).to eq "User #{@name} successfully created!"
+      end
     end
   end
 
@@ -61,17 +93,37 @@ describe "Users" do
       expect(on(LoginPage).login_header_element.when_visible.text).to eq "Log in"
     end
 
-    it "logins the user" do
-      on(LoginPage).login_with(@email, @password)
-      expect(on(Dashboard).user_name_element.when_visible.text).to eq @name
+    context "with invalid data" do
+      it "tries to login a user with not existing email" do
+        on(LoginPage).login_with(nil, @password)
+      end
+
+      it "displays error about not existing email" do
+        expect(on(LoginPage).flash_message_element.when_visible.text).to eq 'Provided e-mail does not exist.'
+      end
+
+      it "tries to login a user with incorrect password" do
+        on(LoginPage).login_with(@email, nil)
+      end
+
+      it "displays error about invalid password" do
+        expect(on(LoginPage).flash_message_element.when_visible.text).to eq 'Wrong password provided.'
+      end
     end
 
-    it "redirects to Ideas page" do
-      expect(on(IdeasPage).ideas_header_element.visible?).to be_truthy
-    end
+    context "with valid data" do
+      it "logins the user" do
+        on(LoginPage).login_with(@email, @password)
+        expect(on(Dashboard).user_name_element.when_visible.text).to eq @name
+      end
 
-    it "displays information about successful login" do
-      expect(on(IdeasPage).flash_message_element.when_visible.text).to eq "Successfully logged in."
+      it "redirects to Ideas page" do
+        expect(on(IdeasPage).ideas_header_element.visible?).to be_truthy
+      end
+
+      it "displays information about successful login" do
+        expect(on(IdeasPage).flash_message_element.when_visible.text).to eq "Successfully logged in."
+      end
     end
   end
 end

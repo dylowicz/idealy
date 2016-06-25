@@ -7,17 +7,32 @@ shared_examples "Create Task" do
       on(IdeasPage).go_to_idea @idea.title
     end
 
-    it "creates a Task" do
-      on(TasksPage).add_task_with @task.title
-      @current_page.wait_for(on(TasksPage).tasks_list_element)
+    context "with valid data" do
+      it "creates a Task" do
+        on(TasksPage).add_task_with @task.title
+        @current_page.wait_for(on(TasksPage).tasks_list_element)
+      end
+
+      it "displays Task's title" do
+        expect(on(TasksPage).find_by_title(@task.title)).not_to be_nil
+      end
+
+      it "shows not completed Tasks counter" do
+        expect(on(TasksPage).tasks_counter_element.when_visible.text).to eq "1"
+      end
     end
 
-    it "displays Task's title" do
-      expect(on(TasksPage).find_by_title(@task.title)).not_to be_nil
-    end
+    context "with invalid data" do
+      before(:all) { @count_of_tasks = on(TasksPage).tasks.length}
 
-    it "shows not completed Tasks counter" do
-      expect(on(TasksPage).tasks_counter_element.when_visible.text).to eq "1"
+      it "tries to create an empty Task" do
+        on(TasksPage).add_task_with(nil)
+        @current_page.wait_for(on(TasksPage).tasks_list_element)
+      end
+
+      it "does not create an empty Task" do
+        expect(on(TasksPage).tasks.length).to eq @count_of_tasks
+      end
     end
   end
 end
