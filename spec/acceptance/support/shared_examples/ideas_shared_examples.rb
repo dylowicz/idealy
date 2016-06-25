@@ -11,33 +11,48 @@ shared_examples "Create Idea" do
       expect(on(IdeaNewPage).idea_form_header_element.when_visible.text).to eq "Create a new Idea"
     end
 
-    it "creates a new Idea" do
-      on(IdeaNewPage).submit_with(@idea.title, @idea.description)
-      expect(on(IdeaPage).flash_message_element.when_visible.text).to eq "Idea created!"
+    context "with invalid data" do
+      it "tries to create a new Idea" do
+        on(IdeaNewPage).submit_with(nil, nil)
+      end
+
+      it "displays error that Idea could not be created" do
+        expect(on(IdeaNewPage).flash_message_element.when_visible.text).to eq "Idea could not be created."
+      end
     end
 
-    it "redirects to created Idea page" do
-      expect(on(IdeaPage).idea_box_element.visible?).to be_truthy
-    end
+    context "with valid data" do
+      it "creates a new Idea" do
+        on(IdeaNewPage).submit_with(@idea.title, @idea.description)
+      end
 
-    it "displays Idea's title" do
-      expect(on(IdeaPage).title_element.when_visible.text).to eq @idea.title
-    end
+      it "displays information about successful Idea create" do
+        expect(on(IdeaPage).flash_message_element.when_visible.text).to eq "Idea created!"
+      end
 
-    it "displays Idea's description" do
-      expect(on(IdeaPage).description_element.when_visible.text).to eq @idea.description
-    end
+      it "redirects to created Idea page" do
+        expect(on(IdeaPage).idea_box_element.visible?).to be_truthy
+      end
 
-    it "displays Idea's status" do
-      expect(on(IdeaPage).status_element.when_visible.text).to eq "New"
-    end
+      it "displays Idea's title" do
+        expect(on(IdeaPage).title_element.when_visible.text).to eq @idea.title
+      end
 
-    it "finds no Notes" do
-      expect(on(NotesPage).notes_info_element.when_visible.text).to eq "Nothing has been said, yet!"
-    end
+      it "displays Idea's description" do
+        expect(on(IdeaPage).description_element.when_visible.text).to eq @idea.description
+      end
 
-    it "finds no Tasks" do
-      expect(on(TasksPage).tasks_info_element.when_visible.text).to eq "There's nothing to do!"
+      it "displays Idea's status" do
+        expect(on(IdeaPage).status_element.when_visible.text).to eq "New"
+      end
+
+      it "finds no Notes" do
+        expect(on(NotesPage).notes_info_element.when_visible.text).to eq "Nothing has been said, yet!"
+      end
+
+      it "finds no Tasks" do
+        expect(on(TasksPage).tasks_info_element.when_visible.text).to eq "There's nothing to do!"
+      end
     end
   end
 end
@@ -70,25 +85,40 @@ shared_examples "Update Idea" do
       expect(on(IdeaEditPage).status_element.when_visible.value).to eq "new"
     end
 
-    it "updates Idea with new data" do
-      on(IdeaEditPage).submit_with(@updated_idea.title, @updated_idea.description, @updated_idea.status)
-      expect(on(IdeaPage).flash_message_element.when_visible.text).to eq "Idea updated!"
+    context "with invalid data" do
+      it "tries to update Idea" do
+        on(IdeaEditPage).submit_with(nil, nil, nil)
+      end
+
+      it "displays error that Idea could not be updated" do
+        expect(on(IdeaEditPage).flash_message_element.when_visible.text).to eq "Idea could not be updated."
+      end
     end
 
-    it "redirects to created Idea page" do
-      expect(on(IdeaPage).idea_box_element.visible?).to be_truthy
-    end
+    context "with valid data" do
+      it "updates Idea with new data" do
+        on(IdeaEditPage).submit_with(@updated_idea.title, @updated_idea.description, @updated_idea.status)
+      end
 
-    it "displays updated Idea's title" do
-      expect(on(IdeaPage).title_element.when_visible.text).to eq @updated_idea.title
-    end
+      it "displays information about successful Idea update" do
+        expect(on(IdeaPage).flash_message_element.when_visible.text).to eq "Idea updated!"
+      end
 
-    it "displays updated Idea's description" do
-      expect(on(IdeaPage).description_element.when_visible.text).to eq @updated_idea.description
-    end
+      it "redirects to created Idea page" do
+        expect(on(IdeaPage).idea_box_element.visible?).to be_truthy
+      end
 
-    it "displays updated Idea's status" do
-      expect(on(IdeaPage).status_element.when_visible.text).to eq @updated_idea.status.capitalize
+      it "displays updated Idea's title" do
+        expect(on(IdeaPage).title_element.when_visible.text).to eq @updated_idea.title
+      end
+
+      it "displays updated Idea's description" do
+        expect(on(IdeaPage).description_element.when_visible.text).to eq @updated_idea.description
+      end
+
+      it "displays updated Idea's status" do
+        expect(on(IdeaPage).status_element.when_visible.text).to eq @updated_idea.status.capitalize
+      end
     end
   end
 end

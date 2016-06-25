@@ -7,8 +7,8 @@ class IdeaFormPage < BasePage
   link(:cancel, id: 'cancel')
 
   def submit_with(title=nil, description=nil)
-    self.title = title if title
-    self.description = description if description
+    self.title = title
+    self.description = description
     submit
   end
 end
