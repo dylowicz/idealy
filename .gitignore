@@ -63,3 +63,7 @@ bower.json
 
 # RSpec reports
 /rspec_html_reports
+
+# Diagrams generators
+*.pdf
+/doc
