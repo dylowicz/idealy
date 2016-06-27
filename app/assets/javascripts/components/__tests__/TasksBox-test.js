@@ -15,25 +15,26 @@ function setup(tasks=[]) {
   return output;
 }
 
-describe('TasksBox', () => {
-  const tasks = [
+const tasks = [
     {
-      id: 1,
-      title: "There's some title!",
-      completed: false
+        id: 1,
+        title: "There's some title!",
+        completed: false
     },
     {
-      id: 2,
-      title: "Another task with another title.",
-      completed: true
+        id: 2,
+        title: "Another task with another title.",
+        completed: true
     },
     {
-      id: 3,
-      title: "That's the last task with some title",
-      completed: false
+        id: 3,
+        title: "That's the last task with some title",
+        completed: false
     }
-  ];
+];
 
+
+describe('TasksBox', () => {
   describe('structure', () => {
     describe('when no tasks', () => {
       let output;

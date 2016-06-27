@@ -15,25 +15,25 @@ function setup(notes=[]) {
   return output;
 }
 
-describe('NotesBox', () => {
-  const notes = [
+const notes = [
     {
-      id: 1,
-      content: "There is some content",
-      created_at: "2016-06-08T00:27:00.490Z"
+        id: 1,
+        content: "There is some content",
+        created_at: "2016-06-08T00:27:00.490Z"
     },
     {
-      id: 2,
-      content: "Another task with another title.",
-      created_at: "2016-06-08T00:27:00.490Z"
+        id: 2,
+        content: "Another task with another title.",
+        created_at: "2016-06-08T00:27:00.490Z"
     },
     {
-      id: 3,
-      content: "That's the last task with some title",
-      created_at: "2016-06-08T00:27:00.490Z"
+        id: 3,
+        content: "That's the last task with some title",
+        created_at: "2016-06-08T00:27:00.490Z"
     }
-  ];
+];
 
+describe('NotesBox', () => {
   describe('structure', () => {
     describe('when no notes', () => {
       let output;

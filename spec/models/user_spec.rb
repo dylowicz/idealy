@@ -7,7 +7,7 @@ describe User, type: :model do
 
   it { is_expected.to have_many(:ideas).dependent(:destroy) }
 
-  context "validate name" do
+  describe "name validation" do
     subject { FactoryGirl.build(:user) }
     
     it { is_expected.to validate_presence_of(:name) }
@@ -15,7 +15,7 @@ describe User, type: :model do
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(50) }
   end
 
-  describe "validate email" do
+  describe "email validation" do
     let(:invalid_email) { "test#example.com" }
     let(:upcased_email) { "TEST@EXAMPLE.COM" }
 
@@ -32,7 +32,7 @@ describe User, type: :model do
     end
   end
 
-  context "validate password" do
+  describe "password validation" do
     it { is_expected.to have_secure_password }
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to validate_length_of(:password).is_at_least(6) }
