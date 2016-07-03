@@ -14,10 +14,6 @@ shared_examples "Create Note" do
         @current_page.wait_for(on(NotesPage).notes_list_element)
       end
 
-      # it "displays Note's title" do
-      #   expect(on(NotesPage).find_by_title(@note.title)).not_to be_nil
-      # end
-
       it "displays Note's content" do
         expect(on(NotesPage).find_by_content(@note.content)).not_to be_nil
       end
@@ -51,8 +47,12 @@ shared_examples "Update Note" do
 
     context "with valid data" do
       it "updates a Note" do
-        on(NotesPage).edit_note(@note.content, @updated_note.content)
+        on(NotesPage).edit_note(@note.content, @updated_note.content, @updated_note.title)
         @current_page.wait_for(on(NotesPage).notes_list_element)
+      end
+
+      it "displays Note's title" do
+        expect(on(NotesPage).find_by_title(@updated_note.title)).not_to be_nil
       end
 
       it "displays updated Note's content" do

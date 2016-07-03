@@ -8,7 +8,7 @@ class NotesPage < BasePage
   button(:add_note, id: 'add-note')
   div(:note_question, class: 'note-title')
   div(:note_content, class: 'note-content')
-  text_field(:edit_note_title_textarea, class: 'edit-note-title-textfield')
+  text_field(:edit_note_title_textfield, class: 'edit-note-title-textfield')
   textarea(:edit_note_content_textarea, class: 'edit-note-content-textarea')
   element(:note_created_at, :small, class: 'note-created-at')
   link(:save_edited_note, class: 'save-edit-note')
@@ -38,9 +38,10 @@ class NotesPage < BasePage
     add_note
   end
 
-  def edit_note(content, newContent)
+  def edit_note(content, newContent, title=nil)
     wait_for(notes_list_element)
     find_by_content(content).double_click
+    self.edit_note_title_textfield = title if title
     self.edit_note_content_textarea = newContent
     save_edited_note
   end
