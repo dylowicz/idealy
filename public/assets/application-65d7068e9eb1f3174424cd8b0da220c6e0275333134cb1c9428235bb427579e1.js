@@ -11058,20 +11058,34 @@ Note = require('./components/notes/Note');
 },{"./components/notes/Note":2,"./components/notes/NoteContainer":3,"./components/notes/NoteForm":4,"./components/notes/NoteList":5,"./components/notes/NotesBox":6,"./components/tasks/Task":7,"./components/tasks/TaskForm":8,"./components/tasks/TaskList":9,"./components/tasks/TasksBox":10,"jquery":37,"react":177,"react-dom":39}],2:[function(require,module,exports){
 const React = require('react');
 
-const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onNoteCancelClick, onNoteDeleteClick, inEditMode, inputHeight}) => {
-    let input;
+const Note = ({title, content, created_at, onNoteEditDoubleClick, onNoteSaveClick, onNoteCancelClick, onNoteDeleteClick, inEditMode, textAreaHeight}) => {
+    let titleInput, contentInput;
+
+    const panelHeader = React.createElement("div", {
+        onDoubleClick: event => onNoteEditDoubleClick(event), 
+        className: "panel-heading note-title"}, 
+        title
+    );
+
+    const textField = React.createElement("input", {
+        type: "text", 
+        className: "form-control edit-note-title-textfield", 
+        placeholder: "Ask a question", 
+        defaultValue: title, 
+        ref: node => titleInput = node}
+    );
 
     const panelBody = React.createElement("div", {
-        onDoubleClick: event => onNoteEditContentClick(event), 
+        onDoubleClick: event => onNoteEditDoubleClick(event), 
         className: "panel-body note-content"}, 
         content
     );
 
-    const textarea = React.createElement("textarea", {
+    const textArea = React.createElement("textarea", {
         className: "form-control edit-note-content-textarea", 
-        style: {height: inputHeight}, 
+        style: {height: textAreaHeight}, 
         defaultValue: content, 
-        ref: node => input = node}
+        ref: node => contentInput = node}
     );
 
     const dateSpan = React.createElement("small", {
@@ -11080,7 +11094,7 @@ const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onN
     );
 
     const saveButton = React.createElement("a", {
-        onClick: () => onNoteSaveClick(input.value), 
+        onClick: () => onNoteSaveClick(titleInput.value, contentInput.value), 
         className: "save-edit-note"}, 
         "Save"
     );
@@ -11103,7 +11117,8 @@ const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onN
 
     return (
         React.createElement("div", {className: "panel panel-primary note-item"}, 
-             inEditMode ? textarea : panelBody, 
+             inEditMode ? textField : panelHeader, 
+             inEditMode ? textArea : panelBody, 
             React.createElement("div", {className: "panel-footer note-footer"}, 
                  inEditMode ? editActionButtons : dateSpan, 
                 deleteButton
@@ -11123,24 +11138,24 @@ class NoteContainer extends React.Component {
         super(props);
         this.state = {
             inEditMode: false,
-            inputHeight: 0
+            textAreaHeight: 0
         };
 
-        this.onNoteEditContentClick = this.onNoteEditContentClick.bind(this);
+        this.onNoteEditDoubleClick = this.onNoteEditDoubleClick.bind(this);
         this.onNoteSaveClick = this.onNoteSaveClick.bind(this);
         this.onNoteCancelClick = this.onNoteCancelClick.bind(this);
     }
 
-    onNoteEditContentClick(event) {
+    onNoteEditDoubleClick(event) {
         const height = $(event.target).height() + 30;
         this.setState({
             inEditMode: true,
-            inputHeight: height
+            textAreaHeight: height
         });
     }
 
-    onNoteSaveClick(id, content) {
-        this.props.onNoteEditSaveClick(id, content);
+    onNoteSaveClick(id, title, content) {
+        this.props.onNoteEditSaveClick(id, title, content);
         this.setState({ inEditMode: false });
     }
 
@@ -11152,12 +11167,12 @@ class NoteContainer extends React.Component {
         return (
             React.createElement(Note, React.__spread({}, 
                 this.props.note, 
-                {onNoteEditContentClick: this.onNoteEditContentClick, 
-                onNoteSaveClick: content => this.onNoteSaveClick(this.props.note.id, content), 
+                {onNoteEditDoubleClick: this.onNoteEditDoubleClick, 
+                onNoteSaveClick: (title, content) => this.onNoteSaveClick(this.props.note.id, title, content), 
                 onNoteCancelClick: this.onNoteCancelClick, 
                 onNoteDeleteClick: this.props.onNoteDeleteClick, 
                 inEditMode: this.state.inEditMode, 
-                inputHeight: this.state.inputHeight})
+                textAreaHeight: this.state.textAreaHeight})
             )
         );
     }
@@ -11249,11 +11264,12 @@ class NotesBox extends React.Component {
         this._createNote(this.props.url, {note: newNote});
     }
 
-    onNoteEditSaveClick(id, content) {
+    onNoteEditSaveClick(id, title, content) {
         if (content.trim() === "") return;
         const editedNote = {
             id: id,
-            content: content
+            title: title.trim(),
+            content: content.trim()
         };
         this._updateNote(`${this.props.url}/${id}`, {note: editedNote});
     }
@@ -43894,3 +43910,4 @@ $(document).on("ready page:change", function() {
 
 //= rqeuire bootstrap
 
+;

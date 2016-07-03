@@ -6,24 +6,24 @@ class NoteContainer extends React.Component {
         super(props);
         this.state = {
             inEditMode: false,
-            inputHeight: 0
+            textAreaHeight: 0
         };
 
-        this.onNoteEditContentClick = this.onNoteEditContentClick.bind(this);
+        this.onNoteEditDoubleClick = this.onNoteEditDoubleClick.bind(this);
         this.onNoteSaveClick = this.onNoteSaveClick.bind(this);
         this.onNoteCancelClick = this.onNoteCancelClick.bind(this);
     }
 
-    onNoteEditContentClick(event) {
+    onNoteEditDoubleClick(event) {
         const height = $(event.target).height() + 30;
         this.setState({
             inEditMode: true,
-            inputHeight: height
+            textAreaHeight: height
         });
     }
 
-    onNoteSaveClick(id, content) {
-        this.props.onNoteEditSaveClick(id, content);
+    onNoteSaveClick(id, title, content) {
+        this.props.onNoteEditSaveClick(id, title, content);
         this.setState({ inEditMode: false });
     }
 
@@ -35,12 +35,12 @@ class NoteContainer extends React.Component {
         return (
             <Note
                 {...this.props.note}
-                onNoteEditContentClick={this.onNoteEditContentClick}
-                onNoteSaveClick={content => this.onNoteSaveClick(this.props.note.id, content)}
+                onNoteEditDoubleClick={this.onNoteEditDoubleClick}
+                onNoteSaveClick={(title, content) => this.onNoteSaveClick(this.props.note.id, title, content)}
                 onNoteCancelClick={this.onNoteCancelClick}
                 onNoteDeleteClick={this.props.onNoteDeleteClick}
                 inEditMode={this.state.inEditMode}
-                inputHeight={this.state.inputHeight}
+                textAreaHeight={this.state.textAreaHeight}
             />
         );
     }
