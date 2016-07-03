@@ -12,6 +12,7 @@ describe('NoteContainer', () => {
 
     beforeEach(() => {
       props = {
+        title: "Are there any questions?",
         content: "There is some content",
         created_at: "2016-06-08T00:27:00.490Z"
       }
@@ -22,14 +23,15 @@ describe('NoteContainer', () => {
 
     it('renders NoteContainer component correctly', () => {
       expect(output.type).toEqual(Note);
+      expect(output.props.title).toEqual(props.title);
       expect(output.props.content).toEqual(props.content);
       expect(output.props.created_at).toEqual(props.created_at);
-      expect(output.props.onNoteEditContentClick).toBeDefined();
+      expect(output.props.onNoteEditDoubleClick).toBeDefined();
       expect(output.props.onNoteSaveClick).toBeDefined();
       expect(output.props.onNoteCancelClick).toBeDefined();
       expect(output.props.onNoteDeleteClick).toBeUndefined();
       expect(output.props.inEditMode).toEqual(false);
-      expect(output.props.inputHeight).toEqual(0);
+      expect(output.props.textAreaHeight).toEqual(0);
     });
   });
 
