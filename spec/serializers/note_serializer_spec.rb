@@ -12,6 +12,10 @@ describe NoteSerializer, type: :serializer do
       expect(subject['id']).to eql(resource.id)
     end
 
+    it "has a title" do
+      expect(subject['title']).to eql(resource.title)
+    end
+
     it "has a content" do
       expect(subject['content']).to eql(resource.content)
     end

@@ -6,7 +6,9 @@ class NotesPage < BasePage
   div(:notes_list, id: 'notes-list')
   textarea(:add_note_content_textarea, id: 'add-note-content-textarea')
   button(:add_note, id: 'add-note')
+  div(:note_question, class: 'note-title')
   div(:note_content, class: 'note-content')
+  text_field(:edit_note_title_textarea, class: 'edit-note-title-textfield')
   textarea(:edit_note_content_textarea, class: 'edit-note-content-textarea')
   element(:note_created_at, :small, class: 'note-created-at')
   link(:save_edited_note, class: 'save-edit-note')
@@ -20,6 +22,10 @@ class NotesPage < BasePage
 
   def notes
     notes_list_element.div_elements(class: 'note-item')
+  end
+
+  def find_by_title(title)
+    notes.find { |e| e.div_element(class: 'note-title', text: title) }
   end
 
   def find_by_content(content)

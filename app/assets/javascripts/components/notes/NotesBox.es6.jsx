@@ -31,11 +31,12 @@ class NotesBox extends React.Component {
         this._createNote(this.props.url, {note: newNote});
     }
 
-    onNoteEditSaveClick(id, content) {
+    onNoteEditSaveClick(id, title, content) {
         if (content.trim() === "") return;
         const editedNote = {
             id: id,
-            content: content
+            title: title.trim(),
+            content: content.trim()
         };
         this._updateNote(`${this.props.url}/${id}`, {note: editedNote});
     }

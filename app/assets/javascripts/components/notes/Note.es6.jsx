@@ -1,19 +1,33 @@
 const React = require('react');
 
-const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onNoteCancelClick, onNoteDeleteClick, inEditMode, inputHeight}) => {
-    let input;
+const Note = ({title, content, created_at, onNoteEditDoubleClick, onNoteSaveClick, onNoteCancelClick, onNoteDeleteClick, inEditMode, textAreaHeight}) => {
+    let titleInput, contentInput;
+
+    const panelHeader = <div
+        onDoubleClick={event => onNoteEditDoubleClick(event)}
+        className="panel-heading note-title">
+        {title}
+    </div>;
+
+    const textField = <input
+        type="text"
+        className="form-control edit-note-title-textfield"
+        placeholder="Ask a question"
+        defaultValue={title}
+        ref={node => titleInput = node}
+    />;
 
     const panelBody = <div
-        onDoubleClick={event => onNoteEditContentClick(event)}
+        onDoubleClick={event => onNoteEditDoubleClick(event)}
         className="panel-body note-content">
         {content}
     </div>;
 
-    const textarea = <textarea
+    const textArea = <textarea
         className="form-control edit-note-content-textarea"
-        style={{height: inputHeight}}
+        style={{height: textAreaHeight}}
         defaultValue={content}
-        ref={node => input = node}
+        ref={node => contentInput = node}
     />;
 
     const dateSpan = <small
@@ -22,7 +36,7 @@ const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onN
     </small>;
 
     const saveButton = <a
-        onClick={() => onNoteSaveClick(input.value)}
+        onClick={() => onNoteSaveClick(titleInput.value, contentInput.value)}
         className="save-edit-note">
         Save
     </a>;
@@ -45,7 +59,8 @@ const Note = ({content, created_at, onNoteEditContentClick, onNoteSaveClick, onN
 
     return (
         <div className="panel panel-primary note-item">
-            { inEditMode ? textarea : panelBody }
+            { inEditMode ? textField : panelHeader }
+            { inEditMode ? textArea : panelBody }
             <div className="panel-footer note-footer">
                 { inEditMode ? editActionButtons : dateSpan }
                 {deleteButton}

@@ -7,14 +7,15 @@ import Note from '../notes/Note.es6.jsx';
 
 function noteProps(mode=false) {
   return {
+    title: "Are there any questions?",
     content: "There is some content",
     created_at: "2016-06-08T00:27:00.490Z",
-    onNoteEditContentClick: Function,
+    onNoteEditDoubleClick: Function,
     onNoteSaveClick: Function,
     onNoteCancelClick: Function,
     onNoteDeleteClick: Function,
     inEditMode: mode,
-    inputHeight: 40
+    testAreaHeight: 40
   };
 }
 
@@ -33,7 +34,12 @@ describe('Note', () => {
     expect(output.type).toEqual('div');
     expect(output.props.className).toEqual('panel panel-primary note-item');
 
-    const [ panelBody, panelFooter ] = output.props.children;
+    const [ panelHeader, panelBody, panelFooter ] = output.props.children;
+    expect(panelHeader.type).toEqual('div');
+    expect(panelHeader.props.className).toEqual('panel-heading note-title');
+    expect(panelHeader.props.children).toEqual(props.title);
+    expect(panelHeader.props.onDoubleClick).toBeDefined();
+
     expect(panelBody.type).toEqual('div');
     expect(panelBody.props.className).toEqual('panel-body note-content');
     expect(panelBody.props.children).toEqual(props.content);
@@ -53,14 +59,22 @@ describe('Note', () => {
   });
 
   describe('when in edit mode', () => {
-    let props, textarea, editActionButtons;
+    let props, textfield, textarea, editActionButtons;
 
     beforeEach(() => {
       const setupObject = setup(noteProps(true));
       props = setupObject.props;
-      textarea = setupObject.output.props.children[0];
-      editActionButtons = setupObject.output.props.children[1].props.children[0];
+      textfield = setupObject.output.props.children[0];
+      textarea = setupObject.output.props.children[1];
+      editActionButtons = setupObject.output.props.children[2].props.children[0];
     });
+
+  it('renders textfield', () => {
+      expect(textfield.type).toEqual('input');
+      expect(textfield.props.className).toEqual('form-control edit-note-title-textfield');
+      expect(textfield.props.defaultValue).toEqual(props.title);
+      expect(textfield.ref).toBeDefined();
+  });
 
     it('renders textarea', () => {
       expect(textarea.type).toEqual('textarea');
