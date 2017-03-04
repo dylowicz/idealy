@@ -1,28 +1,20 @@
-<<<<<<< HEAD
-## README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-=======
 # idealy
->>>>>>> 3b0fe71c7ad17fa14ebaa7de9bc0d54cd5be5452
+
+### Overview
+Idealy is a simple idea manager written in Ruby on Rails and React. Apart from the app, it contains all-levels behavior-driven tests coverage that has been added in parallel with development of functional components.
+
+#### Purpose
+Project was created as a part of Master thesis: _Automation of testing process for web applications based on JavaScript and Ruby technologies_.
+
+### Tech stack
+#### Applictation
+* Ruby on Rails
+* React
+
+#### Tests:
+* RSpec - as a BDD framework for Ruby tests
+* WATiR - for acceptance, end-to-end testing
+* Jest - for React's components testing
+
+### Tests coverage infographic
+![alt tag](https://www.dropbox.com/s/p15wbo1g0rscufp/idealy-web-application-testing-diagram.png?raw=true)
