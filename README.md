@@ -1,17 +1,16 @@
 # idealy
 
 ### Overview
-Idealy is a simple idea manager written in Ruby on Rails and React. Apart from the app, it contains all-levels behavior-driven tests coverage that has been added in parallel with development of functional components.
+**idealy** is a simple idea manager web application written in Ruby on Rails and React.
 
-#### Purpose
-Project was created as a part of Master thesis: _Automation of testing process for web applications based on JavaScript and Ruby technologies_.
+ Apart from the app, it contains all-levels behavior-driven tests coverage that has been added in parallel with functional development.
 
 ### Tech stack
-#### Applictation
+Application:
 * Ruby on Rails
 * React
 
-#### Tests:
+Tests:
 * RSpec - as a BDD framework for Ruby tests
 * WATiR - for acceptance, end-to-end testing
 * Jest - for React's components testing
